@@ -1,0 +1,10 @@
+.editReminder,
+.editBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+textarea {
+  width: 600px;
+}

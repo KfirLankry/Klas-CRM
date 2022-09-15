@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <div class="row main">
+    <div class="col-lg-6 leftDiv">
+      <img class="image" src="../../../assets/img/login.svg" alt="" />
+    </div>
+    <div class="col-lg-6 rightDiv">
+      <div class="logo">
+        <img
+          class="mb-5 logo img-fluid"
+          src="../../../assets/img/logo.png"
+          alt=""
+        />
+      </div>
+      <div>
+        <h1 class="text-center txt mb-5">Welcome Back</h1>
+      </div>
+      <div class="alert alert-success" role="alert">
+        <div class="text-center">
+          <div class="fw-bold">
+            <i class="fa-solid fa-circle-exclamation"></i> Demo Login
+          </div>
+          <div>Email: demo@klascrm.com | Password: adminadmin</div>
+        </div>
+      </div>
+      <hr class="mx-auto w-50 mt-4" />
+      <div class="register container">
+        <form
+          class="needs-validation"
+          #loginForm="ngForm"
+          (ngSubmit)="submitLogin()"
+          novalidate
+        >
+          <div class="form-group pt-3">
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="* Email"
+              required
+              email
+              minlength="8"
+              ngModel
+              [(ngModel)]="user.email"
+              #email="ngModel"
+            />
+            <small
+              class="mt-2 text-left"
+              *ngIf="!email?.valid && (email?.dirty || email?.touched)"
+              style="color: red"
+            >
+              <i class="fa-solid fa-circle-exclamation"></i> This field is
+              requierd</small
+            >
+          </div>
+          <div class="form-group pt-3">
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="* Password"
+              required
+              minlength="6"
+              ngModel
+              [(ngModel)]="user.password"
+              #password="ngModel"
+            />
+            <p
+              class="mt-2"
+              *ngIf="!password?.valid && (password?.dirty || password?.touched)"
+              style="color: red"
+            >
+              <i class="fa-solid fa-circle-exclamation"></i> This field is
+              requierd
+            </p>
+            <div></div>
+            <div class="form-group pt-3">
+              <button
+                [disabled]="!loginForm.valid"
+                class="btn btn-secondary"
+                type="submit"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        </form>
+        <hr class="mx-auto w-50 mt-4" />
+        <div class="form-group">
+          <button (click)="loginWithGoogle()" class="btn btn-dark mt-2">
+            <i class="fa-brands fa-google"></i> Login With Google Account
+          </button>
+        </div>
+        <p class="text-center mt-3">
+          New Here? <a routerLink="/register">Click to Signup</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

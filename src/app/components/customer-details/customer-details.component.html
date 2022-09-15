@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+<div class="content">
+  <!-- SideBar -->
+  <div class="row">
+    <div class="col-lg-2 col-sm-0 sideB">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-lg-10 col-sm-12 mt-4">
+      <!-- Header Title -->
+      <div class="header">
+        <div class="mx-4 mt-1">
+          <h2 class="title">
+            <i class="fa-solid fa-user"></i> Customer Details
+          </h2>
+          <small>Customer Information Card.</small>
+        </div>
+      </div>
+      <!-- Card -->
+      <ng-container *ngFor="let customer of costumers">
+        <ng-container *ngIf="customer.id == customerId">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card mb-3 mt-4">
+                <div class="row g-0">
+                  <div class="col-md-4 image">
+                    <img
+                      src="../../../assets/img/149071.png"
+                      class="img-fluid rounded-start mx-3 mt-3"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col-md-8 mx-4">
+                    <div class="card-body">
+                      <h4 class="card-title mt-1 title">
+                        {{ customer.firstName }} {{ customer.lastName }}
+                      </h4>
+                      <div class="card-text">
+                        <h6>Created on: {{ customer.dateAdded }}</h6>
+                        <ng-container *ngIf="customer.phone; else noPhone">
+                          <h6>Phone: {{ customer.phone }}</h6>
+                        </ng-container>
+                        <ng-template #noPhone>
+                          <h6>Phone: No phone added.</h6>
+                        </ng-template>
+                        <ng-container *ngIf="customer.email; else noEmail">
+                          <td>Email: {{ customer.email }}</td>
+                        </ng-container>
+                        <ng-template #noEmail>
+                          <td>Email: No email added.</td>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card mb-3 mt-4 note">
+                <div class="row g-0">
+                  <div class="card-body">
+                    <h4 class="card-title mt-1 title">
+                      <i class="fa-regular fa-note-sticky"></i> Customer Note
+                    </h4>
+                    <div class="card-text">
+                      <ng-container *ngIf="customer.note; else none">
+                        <h6>{{ customer.note }}</h6>
+                      </ng-container>
+                      <ng-template #none>
+                        <span style="color: rgb(192, 192, 192)"
+                          >No notes added yet!</span
+                        >
+                      </ng-template>
+                    </div>
+                    <p class="card-text"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+      <div class="backBtn mt-2">
+        <button (click)="goBack()" class="btn btn-dark btns btn-warning">
+          <i class="fa-solid fa-arrow-left"></i> Go Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

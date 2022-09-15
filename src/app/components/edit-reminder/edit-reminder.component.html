@@ -1,0 +1,44 @@
+<h2 class="text-center mt-4 mb-4">
+  <i class="fa-regular fa-pen-to-square"></i> Edit Reminder
+</h2>
+<div class="editReminder">
+  <div class="shopping-group">
+    <form
+      #editReminder="ngForm"
+      (ngSubmit)="onSubmit()"
+      class="form-group"
+      novalidate
+    >
+      <textarea
+        name="reminder"
+        id="reminder"
+        cols="30"
+        rows="10"
+        class="form-control"
+        placeholder="Edit Reminder..."
+        [(ngModel)]="reminder.reminder"
+        minlength="2"
+        maxlength="200"
+        #editReminder="ngModel"
+      ></textarea>
+      <small
+        *ngIf="
+          !editReminder?.valid && (editReminder?.dirty || editReminder?.touched)
+        "
+        style="color: red"
+      >
+        <i class="fa-solid fa-circle-exclamation mt-2"></i> This field is
+        requeird!</small
+      >
+
+      <div class="editBtn">
+        <button type="submit" class="btn btn-secondary add mt-3">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <span class="hidden"> Edit Reminder</span>
+        </button>
+      </div>
+
+      <br />
+    </form>
+  </div>
+</div>

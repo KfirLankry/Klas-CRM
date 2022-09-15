@@ -1,0 +1,84 @@
+.navbar {
+  background-color: #181e25 !important;
+  color: white;
+}
+
+.logo {
+  width: 1.8rem;
+  margin: 0 0.2rem 0 0;
+}
+
+.dropdown {
+  padding: 0 3.5rem 0 0 !important;
+}
+
+.dropdown-item:hover {
+  background-color: lightslategrey;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
+.notAllowed {
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.notification {
+  width: 2.6rem;
+  height: 2.5rem;
+  background-color: #4d5255;
+  border: 1px solid #181e25;
+  border-radius: 100px;
+}
+
+.notification:hover {
+  background-color: rgb(143, 143, 143);
+}
+
+.fa-bell {
+  color: white;
+}
+
+.logout {
+  margin: 0 1rem 0 0;
+}
+
+.logout:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a,
+.welcome {
+  padding: 0.7rem;
+  color: #c3c3c3;
+  text-decoration: none;
+  transition: transform 250ms;
+}
+
+.profileImg {
+  width: 50px;
+  margin: 0 1rem 0 0;
+  border-radius: 50px;
+}
+
+a:hover {
+  color: #6648fe;
+  transform: translateX(5px);
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .mobileHidden {
+    display: none;
+  }
+  .hidden {
+    display: block;
+  }
+}

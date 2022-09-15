@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+<div class="content">
+  <div class="row row-cols-2">
+    <div class="col-lg-2 col-sm-0 sideB">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="col-lg-10 col-sm-12 mt-4">
+      <!-- Header Title -->
+      <div class="header">
+        <div class="mx-4 mt-1">
+          <h2 class="title">
+            <i class="fa-regular fa-address-card"></i> Contacts Details
+          </h2>
+          <small>Company's Contacts Information.</small>
+        </div>
+      </div>
+      <!-- Search Customer -->
+      <div class="searchUser mt-4">
+        <div class="search">
+          <div class="input-group" novalidate>
+            <span class="input-group-text"
+              ><i class="fa-solid fa-magnifying-glass"></i
+            ></span>
+            <input
+              name="name"
+              type="search"
+              class="form-control"
+              placeholder="Search Name..."
+              [(ngModel)]="term"
+            />
+          </div>
+        </div>
+
+        <div *ngIf="contact | filter: term as contact">
+          <div class="mt-4">
+            <ng-container *ngIf="contact.length != 0; else noContact">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr class="borderdLine">
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col">Phones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let cnt of contact; index as i">
+                    <tr>
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>{{ cnt.name }}</td>
+                      <td>{{ cnt.email }}</td>
+                      <td>{{ cnt.birthday | date: "dd/MM/YY" }}</td>
+                      <td>{{ cnt.phones }}</td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </ng-container>
+            <ng-template #noContact>
+              <h3 class="text-center mt-5">There is no such contact...</h3>
+              <div class="loadingImage">
+                <img
+                  class="loading img-fluid"
+                  src="../../../assets/img/Loading.svg"
+                  alt=""
+                />
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

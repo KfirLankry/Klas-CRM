@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<div class="content">
+  <!-- SideBar -->
+  <div class="row row-cols-2sidebar">
+    <div class="col-lg-2 col-sm-0 sideB">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-lg-8 col-sm-12 mt-4">
+      <!-- Header Title -->
+      <div class="header container-fluid">
+        <div class="mx-4 mt-1">
+          <h2 class="title"><i class="fa-solid fa-user"></i> Customers</h2>
+          <small>Company's Customers Information.</small>
+        </div>
+      </div>
+      <app-show-list></app-show-list>
+    </div>
+    <!-- Cards -->
+    <div class="col-lg-2 mt-4">
+      <app-statistics></app-statistics>
+      <app-reminder></app-reminder>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<ng-container *ngFor="let reminder of reminderArr">
+  <div class="card text-bg-light mb-3 box mt-3">
+    <div class="card-header text-center title">
+      <i class="fa-regular fa-note-sticky"></i> Reminder
+    </div>
+    <div class="card-body">
+      <ng-container *ngIf="reminder.reminder; else noReminder">
+        <p class="card-text mt-3 mx-1 txt text-center">
+          {{ reminder.reminder }}
+        </p>
+      </ng-container>
+      <ng-template #noReminder>
+        <p
+          class="card-text mt-3 mx-1 txt text-center"
+          style="color: rgb(164, 164, 164)"
+        >
+          No Reminder added yet!
+        </p>
+      </ng-template>
+      <div class="reminderBtn">
+        <button (click)="editReminder(reminder)" class="btn btn-dark mt-2 mb-2">
+          <i class="fa-solid fa-pen-to-square"></i> Edit Reminder
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>

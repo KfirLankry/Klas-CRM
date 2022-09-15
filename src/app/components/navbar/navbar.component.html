@@ -1,0 +1,70 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a routerLink="/dashboard/customers" class="navbar-brand"
+      ><img class="logo" src="../../../assets/img/logo.png" alt="" /> Klav
+      CRM</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+      <div class="nav-item hidden">
+        <div class="links">
+          <a href=""><i class="fa-solid fa-users"></i> Customers</a>
+          <a href=""><i class="fa-regular fa-address-card"></i> Contacts</a>
+          <a href=""><i class="fa-solid fa-headset"></i> Leads</a>
+          <a href=""><i class="fa-regular fa-flag"></i> Reports</a>
+        </div>
+      </div>
+      <div class="notification text-dark mx-3">
+        <button
+          type="button"
+          class="notification position-relative"
+          [ngbPopover]="test"
+          triggers="mouseenter:mouseleave"
+          popoverTitle="Notifications"
+        >
+          <i class="fa-solid fa-bell fa-lg"></i>
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          >
+            1
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+      </div>
+      <div class="nav-item dropdown">
+        <a
+          class="nav-link mobileHidden dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{ getUserName() }}
+        </a>
+        <ul class="dropdown-menu drop bg-dark">
+          <li>
+            <a class="dropdown-item text-white notAllowed"
+              ><i class="fa-solid fa-user"></i> Profile</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item text-white" (click)="logout()"
+              ><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,33 @@
+.reminderBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.258);
+}
+
+.title {
+  font-weight: 700;
+  color: #3d4157;
+  font-size: 18px;
+}
+
+.txt {
+  color: #3d4157;
+}
+
+.box {
+  background: linear-gradient(
+      to left,
+      #555d87 0%,
+      #005e98 12%,
+      #0ca2ff 47%,
+      #575e86 100%
+    )
+    left bottom rgb(234, 234, 234) no-repeat;
+  background-size: 100% 5px; /* if linear-gradient, we need to resize it */
+  border-radius: 5px;
+  width: 100%;
+}

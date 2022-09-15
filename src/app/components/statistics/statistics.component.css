@@ -1,0 +1,81 @@
+.box {
+  background: linear-gradient(
+      to left,
+      #555d87 0%,
+      #005e98 12%,
+      #0ca2ff 47%,
+      #575e86 100%
+    )
+    left bottom rgb(234, 234, 234) no-repeat;
+  background-size: 100% 5px; /* if linear-gradient, we need to resize it */
+  border-radius: 5px;
+  width: 100%;
+  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.258);
+}
+
+.title {
+  font-weight: 700;
+  color: #3d4157;
+  font-size: 18px;
+}
+
+.box__header {
+  padding: 15px 25px;
+  position: relative;
+}
+
+.box__header-title {
+  color: #3d4157;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.box__body {
+  padding: 0 25px;
+}
+
+/* STATS */
+
+.stats {
+  color: #3d4157;
+  position: relative;
+  padding-bottom: 25px;
+}
+
+.stats__amount {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.stats__caption {
+  font-size: 1rem;
+}
+
+.stats__change {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  text-align: right;
+  color: #3d4157;
+}
+
+.stats__value {
+  font-size: 18px;
+}
+
+.stats__period {
+  font-size: 13px;
+}
+
+.stats__value--positive {
+  color: #67a411;
+}
+
+.stats__value--negative {
+  color: #fb5055;
+}
+
+.stats--main .stats__amount {
+  font-size: 2.1rem;
+}

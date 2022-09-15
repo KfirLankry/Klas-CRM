@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "klascrm": {
+      "hosting": {
+        "crmSystem": [
+          "klascrm"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "klascrm"
+  }
+}

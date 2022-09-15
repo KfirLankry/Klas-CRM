@@ -1,0 +1,113 @@
+<h2 class="text-center mt-4 mb-4">
+  <i class="fa-solid fa-user"></i> Add New Customer
+</h2>
+<form #addCustomer="ngForm" class="formview form-group" (ngSubmit)="onSubmit()">
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      id="firstName"
+      class="form-control"
+      id="floatingInput"
+      name="firstName"
+      required
+      minlength="2"
+      [(ngModel)]="customer.firstName"
+      #firstName="ngModel"
+    />
+    <label for="floatingInput"
+      ><span style="color: red">*</span> First Name</label
+    >
+    <small
+      class="mt-2 text-left"
+      *ngIf="!firstName?.valid && (firstName?.dirty || firstName?.touched)"
+      style="color: red"
+    >
+      <i class="fa-solid fa-circle-exclamation"></i> This field is
+      requierd</small
+    >
+  </div>
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      id="lastName"
+      class="form-control"
+      id="floatingInput"
+      name="lastName"
+      required
+      minlength="2"
+      [(ngModel)]="customer.lastName"
+      #lastName="ngModel"
+    />
+    <label for="floatingInput"
+      ><span style="color: red">*</span> Last Name</label
+    >
+    <small
+      class="mt-2 text-left"
+      *ngIf="!lastName?.valid && (lastName?.dirty || lastName?.touched)"
+      style="color: red"
+    >
+      <i class="fa-solid fa-circle-exclamation"></i> This field is
+      requierd</small
+    >
+  </div>
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      id="phone"
+      class="form-control"
+      id="floatingInput"
+      name="phone"
+      minlength="8"
+      [(ngModel)]="customer.phone"
+      #phone="ngModel"
+    />
+    <label for="floatingInput"> Phone</label>
+    <small
+      class="mt-2 text-left"
+      *ngIf="!phone?.valid && (phone?.dirty || phone?.touched)"
+      style="color: red"
+    >
+      <i class="fa-solid fa-circle-exclamation"></i> This field is
+      requierd</small
+    >
+  </div>
+  <div class="form-floating">
+    <input
+      type="email"
+      id="email"
+      class="form-control"
+      id="floatingEmail"
+      name="email"
+      minlength="8"
+      [(ngModel)]="customer.email"
+      #email="ngModel"
+    />
+    <label for="floatingPassword"> Email</label>
+    <small
+      class="mt-2 text-left"
+      *ngIf="!email?.valid && (email?.dirty || email?.touched)"
+      style="color: red"
+    >
+      <i class="fa-solid fa-circle-exclamation"></i> This field is
+      requierd</small
+    >
+  </div>
+  <textarea
+    name="note"
+    id="note"
+    placeholder="Customer Note.."
+    class="form-control w-50 mt-3"
+    minlength="5"
+    [(ngModel)]="customer.note"
+    #note="ngModel"
+    cols="30"
+    rows="10"
+  ></textarea>
+  <button
+    [disabled]="!addCustomer.valid"
+    type="submit"
+    class="btn btn-dark mt-4 mb-4 w-50"
+  >
+    Add
+  </button>
+</form>

@@ -1,0 +1,11 @@
+.image {
+  margin: 5rem 0 0 0;
+  width: 30%;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
