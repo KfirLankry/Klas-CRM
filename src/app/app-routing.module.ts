@@ -4,6 +4,7 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { LoginComponent } from './components/login/login.component';
+import { OrdersComponent } from './components/orders/orders.component';
 import { PnfComponent } from './components/pnf/pnf.component';
 import { RegisterComponent } from './components/register/register.component';
 import { GauthGuard } from './guards/gauth.guard';
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'dashboard/contacts',
     component: ContactsComponent,
+    canActivate: [GauthGuard],
+  },
+  {
+    path: 'dashboard/orders',
+    component: OrdersComponent,
     canActivate: [GauthGuard],
   },
   { path: '**', component: PnfComponent },

@@ -26,6 +26,7 @@ import { EditReminderComponent } from './components/edit-reminder/edit-reminder.
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './components/register/register.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RegisterComponent } from './components/register/register.component';
     ReminderComponent,
     EditReminderComponent,
     RegisterComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
