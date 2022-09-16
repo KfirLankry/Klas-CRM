@@ -33,7 +33,7 @@ export class ReportsComponent implements OnInit {
     },
     tooltip:{
       enable:true,
-      format: '<b>${point.y} : ${point.x}</b>'
+      format: '<b>${point.x} Ordered ${point.y} Times</b>'
     },
     colorMap: 'color'
   }
