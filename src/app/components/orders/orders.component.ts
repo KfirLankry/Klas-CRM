@@ -52,7 +52,8 @@ export class OrdersComponent implements OnInit {
     let year = new Date(timestamp.seconds*1000).getFullYear()
 
     if(type=='diff') return `${month+1}/${day}/${year}`
-    return `${day}/${months[month]}/${year}`
+
+    return day<10? `0${day}/${month}/${year}` : `${day}/${month}/${year}`
   }
 
   dateDiffInDays(timestampStart:any, timestampEnd:any) {
