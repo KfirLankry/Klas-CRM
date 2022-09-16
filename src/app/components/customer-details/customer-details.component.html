@@ -35,7 +35,7 @@
                         {{ customer.firstName }} {{ customer.lastName }}
                       </h4>
                       <div class="card-text">
-                        <h6>Created on: {{ customer.dateAdded }}</h6>
+                        <h6>Created on: {{ getDate(customer.dateAdded) }}</h6>
                         <ng-container *ngIf="customer.phone; else noPhone">
                           <h6>Phone: {{ customer.phone }}</h6>
                         </ng-container>

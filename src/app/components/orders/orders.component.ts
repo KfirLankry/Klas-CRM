@@ -53,7 +53,7 @@ export class OrdersComponent implements OnInit {
 
     if(type=='diff') return `${month+1}/${day}/${year}`
 
-    return day<10? `0${day}/${month}/${year}` : `${day}/${month}/${year}`
+    return day<10? `0${day}/${month+1}/${year}` : `${day}/${month+1}/${year}`
   }
 
   dateDiffInDays(timestampStart:any, timestampEnd:any) {
