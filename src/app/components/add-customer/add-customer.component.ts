@@ -15,7 +15,7 @@ export class AddCustomerComponent implements OnInit {
     lastName: '',
     phone: '',
     email: '',
-    dateAdded: new Date().toLocaleDateString(),
+    dateAdded: new Date(),
   };
   constructor(
     private cs: AddCustomerService,
@@ -26,6 +26,7 @@ export class AddCustomerComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
+    // this.customer.dateAdded = new Date(this.customer.dateAdded)
     this.cs
       .addCustomer(this.customer)
       .then(() => {

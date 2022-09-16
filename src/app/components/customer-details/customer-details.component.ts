@@ -27,6 +27,14 @@ export class CustomerDetailsComponent implements OnInit {
     this.customerId = this.actRoute.snapshot.params['id'];
   }
 
+  getDate(timestamp:any){
+    let day = new Date(timestamp.seconds*1000).getDate()
+    let month = new Date(timestamp.seconds*1000).getMonth()
+    let year = new Date(timestamp.seconds*1000).getFullYear() 
+    
+    return day<10? `0${day}/${month+1}/${year}` : `${day}/${month+1}/${year}`
+  }
+
   goBack() {
     this._location.back();
   }

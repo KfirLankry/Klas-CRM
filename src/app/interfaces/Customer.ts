@@ -5,5 +5,5 @@ export interface Customer {
   phone: string;
   email: string;
   note?: string;
-  dateAdded?: string;
+  dateAdded?: Date;
 }
