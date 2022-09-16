@@ -14,6 +14,20 @@
           <small>Company's Reports Information.</small>
         </div>
       </div>
+
+      <div>
+
+        <div class="">
+          <ejs-accumulationchart [title]="'Projects Status'" [legendSettings]="carsChart.legend" [tooltip]="carsChart.tooltip">
+            <e-accumulation-series-collection>
+                <e-accumulation-series type="Pie" [dataSource]="carsChart.cars" [dataLabel]="carsChart.label" xName="name" yName="amount" innerRadius="40%" [pointColorMapping]="carsChart.colorMap">
+
+                </e-accumulation-series>
+            </e-accumulation-series-collection>
+        </ejs-accumulationchart>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

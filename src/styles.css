@@ -10,3 +10,8 @@
 .active-link {
   font-weight: bold;
 }
+
+#js-licensing{
+  display: none !important;
+  visibility: hidden !important;
+}

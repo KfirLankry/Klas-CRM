@@ -66,6 +66,8 @@ import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLab
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     NgbModule,
+    ChartModule,
+    AccumulationChartModule
   ],
   providers: [LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService],
   bootstrap: [AppComponent],
