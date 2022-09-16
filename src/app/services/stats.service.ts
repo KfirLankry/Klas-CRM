@@ -12,7 +12,15 @@ export class StatsService {
 
   constructor(private cusS:AddCustomerService, private carS:CarsService, private oS:ordersService) {}
 
-
+  // getTotalRevenue(){
+  //   this.oS.getAll().subscribe((data)=>{
+  //     let sum = 0
+  //     data.forEach((order)=>{
+  //       sum += order.sum
+  //     })
+  //     return sum
+  //   })
+  // }
 
 
 
