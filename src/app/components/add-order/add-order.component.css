@@ -1,4 +1,5 @@
-.BtnDiv {
+.BtnDiv,
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,4 +9,8 @@
   display: flex;
   flex-direction: row;
   gap: 0.4rem;
+}
+
+input {
+  width: 400px;
 }

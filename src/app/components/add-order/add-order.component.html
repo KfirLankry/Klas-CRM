@@ -1,7 +1,7 @@
+<h2 class="text-center mt-4 mb-4">
+  <i class="fa-solid fa-plus"></i> New Order
+</h2>
 <div class="container">
-  <h2 class="text-center mt-4 mb-4">
-    <i class="fa-solid fa-plus"></i> Add New Order
-  </h2>
   <form #addOrder="ngForm" class="formview form-group" (ngSubmit)="onSubmit()">
     <div class="form-floating mb-3">
       <input
@@ -42,9 +42,9 @@
           {{ cus.firstName + " " + cus.lastName }}
         </option>
       </select>
-      <button class="btn btn-dark" (click)="addNewCustomer(customer)">
+      <!-- <button class="btn btn-dark" (click)="addNewCustomer(customer)">
         <i class="fa-solid fa-plus"></i>
-      </button>
+      </button> -->
     </div>
     <div class="mb-3">
       <select
@@ -103,7 +103,7 @@
       <button
         [disabled]="!addOrder.valid || !endDate.dirty"
         type="submit"
-        class="btn btn-dark mt-4 mb-4 w-50"
+        class="btn btn-dark mt-4 mb-4 w-100"
       >
         Add
       </button>
