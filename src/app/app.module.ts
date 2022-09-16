@@ -29,6 +29,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AddOrderComponent } from './components/add-order/add-order.component';
 
+import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, AccumulationChartModule, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService } from '@syncfusion/ej2-angular-charts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +65,7 @@ import { AddOrderComponent } from './components/add-order/add-order.component';
     provideFirestore(() => getFirestore()),
     NgbModule,
   ],
-  providers: [],
+  providers: [LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
