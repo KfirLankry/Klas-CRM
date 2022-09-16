@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Car } from 'src/app/interfaces/Car';
 import { Customer } from 'src/app/interfaces/Customer';
 import { Order } from 'src/app/interfaces/Order';
 import { AddCustomerService } from 'src/app/services/add-customer.service';
 import { CarsService } from 'src/app/services/cars.service';
 import { ordersService } from 'src/app/services/orders.service';
+import { AddOrderComponent } from '../add-order/add-order.component';
 
 @Component({
   selector: 'app-orders',
@@ -21,7 +23,7 @@ export class OrdersComponent implements OnInit {
   customers:Customer[] = []
   cars:Car[] = []
 
-  constructor(private os:ordersService, private cusS: AddCustomerService, private carS:CarsService, private router:Router) {}
+  constructor(private os:ordersService, private cusS: AddCustomerService, private carS:CarsService, private router:Router, private modal:NgbModal) {}
 
   ngOnInit(): void {
     this.os.getAll().subscribe((data:Order[])=>{
@@ -86,6 +88,13 @@ export class OrdersComponent implements OnInit {
   }
 
 
+  addNewOrder() {
+    const modalRef = this.modal.open(AddOrderComponent, {
+      size: 'lg',
+      centered: true,
+      windowClass: 'dark-modal',
+    });
+  }
 
 
 
