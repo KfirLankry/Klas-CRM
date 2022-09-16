@@ -96,7 +96,7 @@
     name="note"
     id="note"
     placeholder="Customer Note.."
-    class="form-control w-50 mt-3"
+    class="form-control mt-3"
     minlength="5"
     [(ngModel)]="customer.note"
     #note="ngModel"
@@ -106,7 +106,7 @@
   <button
     [disabled]="!addCustomer.valid"
     type="submit"
-    class="btn btn-dark mt-4 mb-4 w-50"
+    class="btn btn-dark mt-4 mb-4"
   >
     Add
   </button>

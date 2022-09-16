@@ -2,7 +2,7 @@
 <div class="addCustomer mt-2">
   <button
     type="submit"
-    class="btn btn-dark mt-3 addShadow w-100"
+    class="btn mobileBtn btn-dark mt-3 addShadow"
     (click)="addNewCustomer(customer)"
   >
     <i class="fa-solid fa-plus"></i> Add New Customer
@@ -182,7 +182,7 @@
           <div class="cardsDiv container-fluid">
             <div class="row">
               <ng-container *ngFor="let customer of costumers; index as i">
-                <div class="card mx-1 mb-2" style="max-width: 49%">
+                <div class="card mx-1 mb-2">
                   <div class="row">
                     <div class="profileImage">
                       <img
@@ -219,7 +219,8 @@
                         </ng-template>
                         <div class="card-text">
                           <small class="text-muted"
-                            >Created on: {{ customer.dateAdded }}</small
+                            >Created on:
+                            {{ getDate(customer.dateAdded) }}</small
                           >
                         </div>
                         <!-- Edit / View / Delete BTNS -->

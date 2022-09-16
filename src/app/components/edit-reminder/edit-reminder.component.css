@@ -8,3 +8,10 @@
 textarea {
   width: 600px;
 }
+
+@media only screen and (max-width: 991px) {
+  textarea,
+  .btn {
+    width: 80vw;
+  }
+}

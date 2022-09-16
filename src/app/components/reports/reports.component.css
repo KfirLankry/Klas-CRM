@@ -24,3 +24,34 @@
   font-weight: 700;
   color: #3d4157;
 }
+
+.orders,
+.graph {
+  box-shadow: 1px 1px 7px 2px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(
+      to left,
+      #555d87 0%,
+      #005e98 12%,
+      #0ca2ff 47%,
+      #575e86 100%
+    )
+    left bottom rgb(234, 234, 234) no-repeat;
+  background-size: 100% 5px; /* if linear-gradient, we need to resize it */
+}
+
+@media only screen and (max-width: 991px) {
+  .header {
+    margin: 0 0 0 0.8rem;
+    width: 95vw;
+    height: 5rem;
+  }
+
+  .sideB {
+    display: none;
+  }
+
+  .orders,
+  .graph {
+    width: 98%;
+  }
+}

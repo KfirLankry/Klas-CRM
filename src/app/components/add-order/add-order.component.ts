@@ -90,12 +90,11 @@ export class AddOrderComponent implements OnInit {
   }
 
   // Add New Customer
-  addNewCustomer(customer: Customer) {
+  addNewCustomer() {
     const modalRef = this.modal.open(AddCustomerComponent, {
       size: 'lg',
       centered: true,
       windowClass: 'dark-modal',
     });
-    modalRef.componentInstance.id = customer.id;
   }
 }

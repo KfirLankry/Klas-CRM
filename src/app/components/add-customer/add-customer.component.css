@@ -7,3 +7,15 @@
 input {
   width: 400px;
 }
+
+textarea,
+.btn {
+  width: 50%;
+}
+
+@media only screen and (max-width: 991px) {
+  textarea,
+  .btn {
+    width: 80vw;
+  }
+}

@@ -27,7 +27,8 @@
 
 @media only screen and (max-width: 991px) {
   .header {
-    width: 100vw;
+    margin: 0 0 0 0.8rem;
+    width: 95vw;
     height: 5rem;
   }
 
@@ -37,5 +38,9 @@
 
   table {
     width: 100vw;
+  }
+
+  .stats {
+    width: 99%;
   }
 }

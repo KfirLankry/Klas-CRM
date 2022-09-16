@@ -19,13 +19,43 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
       <div class="nav-item hidden">
         <div class="links">
-          <a href=""><i class="fa-solid fa-users"></i> Customers</a>
-          <a href=""><i class="fa-regular fa-address-card"></i> Contacts</a>
-          <a href=""><i class="fa-solid fa-headset"></i> Leads</a>
-          <a href=""><i class="fa-regular fa-flag"></i> Reports</a>
+          <a
+            class="link"
+            routerLink="/dashboard/customers"
+            routerLinkActive="active-link"
+            ><i class="fa-solid fa-users"></i
+            ><span class="mx-3">Customers</span></a
+          >
+          <a
+            class="link"
+            routerLink="/dashboard/contacts"
+            routerLinkActive="active-link"
+            ><i class="fa-regular fa-address-card"></i
+            ><span class="mx-3">Employees</span></a
+          >
+          <a
+            class="link"
+            routerLink="/dashboard/orders"
+            routerLinkActive="active-link"
+            ><i class="fa-solid fa-headset"></i
+            ><span class="mx-3">Orders</span></a
+          >
+          <a
+            class="link"
+            routerLink="/dashboard/reports"
+            routerLinkActive="active-link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="mx-3">Reports</span></a
+          >
+
+          <a class="link" routerLink="/dashboard/profile"
+            ><i class="fa-solid fa-user"></i
+            ><span class="mx-3">Profile</span></a
+          >
         </div>
       </div>
-      <div class="notification text-dark mx-3">
+
+      <div class="notification text-dark mx-3 mobileHidden">
         <button
           type="button"
           class="notification position-relative"
@@ -54,7 +84,7 @@
         </a>
         <ul class="dropdown-menu drop bg-dark">
           <li>
-            <a class="dropdown-item text-white notAllowed"
+            <a class="dropdown-item text-white" routerLink="/dashboard/profile"
               ><i class="fa-solid fa-user"></i> Profile</a
             >
           </li>

@@ -34,34 +34,37 @@
 
         <div *ngIf="contactArr | filter: term as contactArr">
           <div class="mt-4">
-            <ng-container *ngIf="contactArr.length != 0; else noContact">
-              <table class="table table-hover table-bordered">
-                <thead>
-                  <tr class="borderdLine text-center">
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Birthday</th>
-                    <th scope="col">Phones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <ng-container *ngFor="let cnt of contactArr; index as i">
-                    <tr>
-                      <th class="text-center" scope="row">{{ i + 1 }}</th>
-                      <td class="text-center">{{ cnt.name }}</td>
-                      <td class="text-center">{{ cnt.email }}</td>
-                      <td class="text-center">{{ cnt.role }}</td>
-                      <td class="text-center">
-                        {{ getBirthday(cnt.birthday) }}
-                      </td>
-                      <td class="text-center">{{ cnt.phones }}</td>
+            <div class="tableDiv">
+              <ng-container *ngIf="contactArr.length != 0; else noContact">
+                <table class="table table-hover table-bordered">
+                  <thead>
+                    <tr class="borderdLine text-center">
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Birthday</th>
+                      <th scope="col">Phones</th>
                     </tr>
-                  </ng-container>
-                </tbody>
-              </table>
-            </ng-container>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let cnt of contactArr; index as i">
+                      <tr>
+                        <th class="text-center" scope="row">{{ i + 1 }}</th>
+                        <td class="text-center">{{ cnt.name }}</td>
+                        <td class="text-center">{{ cnt.email }}</td>
+                        <td class="text-center">{{ cnt.role }}</td>
+                        <td class="text-center">
+                          {{ getBirthday(cnt.birthday) }}
+                        </td>
+                        <td class="text-center">{{ cnt.phones }}</td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </ng-container>
+            </div>
+
             <ng-template #noContact>
               <h3 class="text-center mt-5">There is no such Employee...</h3>
               <div class="loadingImage">

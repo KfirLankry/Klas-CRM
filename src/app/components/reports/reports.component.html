@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="content">
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-2 sideB">
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-lg-10">
@@ -13,24 +13,45 @@
         </div>
       </div>
 
-        <div class="">
-          <ejs-accumulationchart [title]="''" [legendSettings]="carsChart.legend" [tooltip]="carsChart.tooltip">
-            <e-accumulation-series-collection>
-                <e-accumulation-series type="Pie" [dataSource]="carsChart.cars" [dataLabel]="carsChart.label" xName="name" yName="amount" innerRadius="50%">
-
-                </e-accumulation-series>
-            </e-accumulation-series-collection>
-          </ejs-accumulationchart>
-        </div>
-
-        <div class="">
-          <ejs-chart id="chart-container" [primaryXAxis]='customersChart.xAxis' [primaryYAxis]='customersChart.yAxis' [title]='""' [tooltip]="customersChart.tooltip" >
-              <e-series-collection>
-                  <e-series [dataSource]='customersChart.data' type='Column' xName='name' yName='orderCount' [pointColorMapping]='customersChart.colorMap'></e-series>
-              </e-series-collection>
-          </ejs-chart>
+      <div class="orders mt-4">
+        <ejs-accumulationchart
+          [title]="''"
+          [legendSettings]="carsChart.legend"
+          [tooltip]="carsChart.tooltip"
+        >
+          <e-accumulation-series-collection>
+            <e-accumulation-series
+              type="Pie"
+              [dataSource]="carsChart.cars"
+              [dataLabel]="carsChart.label"
+              xName="name"
+              yName="amount"
+              innerRadius="50%"
+            >
+            </e-accumulation-series>
+          </e-accumulation-series-collection>
+        </ejs-accumulationchart>
       </div>
 
+      <div class="graph mt-4">
+        <ejs-chart
+          id="chart-container"
+          [primaryXAxis]="customersChart.xAxis"
+          [primaryYAxis]="customersChart.yAxis"
+          [title]="''"
+          [tooltip]="customersChart.tooltip"
+        >
+          <e-series-collection>
+            <e-series
+              [dataSource]="customersChart.data"
+              type="Column"
+              xName="name"
+              yName="orderCount"
+              [pointColorMapping]="customersChart.colorMap"
+            ></e-series>
+          </e-series-collection>
+        </ejs-chart>
+      </div>
     </div>
   </div>
 </div>

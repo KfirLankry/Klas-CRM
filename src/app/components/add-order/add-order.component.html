@@ -36,13 +36,19 @@
       >
     </div>
     <div class="customer mb-3">
-      <select class="form-select" aria-label="Default select example">
-        <option value="" selected disabled>Choose Customer</option>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        [(ngModel)]="order.customer_id"
+        #customer="ngModel"
+        name="customer"
+        required
+      >
         <option *ngFor="let cus of customers" value="{{ cus.id }}">
           {{ cus.firstName + " " + cus.lastName }}
         </option>
       </select>
-      <a class="btn btn-dark" (click)="addNewCustomer(customer)">
+      <a class="btn btn-dark" (click)="addNewCustomer()">
         <i class="fa-solid fa-plus"></i>
       </a>
     </div>
@@ -59,7 +65,7 @@
         <label for="floatingInput"
           ><span style="color: red">*</span> End Date</label
         >
-        <option value="" selected disabled>Choose Car</option>
+
         <option *ngFor="let car of cars" value="{{ car.id }}">
           {{ car.manufacture + " " + car.model }}
         </option>
