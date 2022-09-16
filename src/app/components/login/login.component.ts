@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         });
         this.as.setSessionData('email', data.user.email as string);
         this.as.setSessionData('isLoggedIn', 'true');
-        this.router.navigateByUrl('dashboard/customers');
+        this.router.navigateByUrl('dashboard/reports');
       })
       .catch(() => {
         this.toastr.error('Email or Password are Incorrect!, Try Again.', '', {
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         });
         this.as.setSessionData('email', data.user.displayName as string);
         this.as.setSessionData('isLoggedIn', 'true');
-        this.router.navigateByUrl('dashboard/customers');
+        this.router.navigateByUrl('dashboard/reports');
       })
       .catch((err) => {
         console.log(err);

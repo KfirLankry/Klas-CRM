@@ -3,4 +3,5 @@ export interface Contact {
   email?: string;
   birthday?: Date;
   phones?: string[];
+  role?: string;
 }

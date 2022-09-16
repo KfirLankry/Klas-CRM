@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './components/register/register.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AddOrderComponent } from './components/add-order/add-order.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AddOrderComponent } from './components/add-order/add-order.component';
     RegisterComponent,
     OrdersComponent,
     AddOrderComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,9 +10,9 @@
       <div class="header">
         <div class="mx-4 mt-1">
           <h2 class="title">
-            <i class="fa-regular fa-address-card"></i> Contacts Details
+            <i class="fa-regular fa-address-card"></i> Employees Details
           </h2>
-          <small>Company's Contacts List.</small>
+          <small>Company's Employees List.</small>
         </div>
       </div>
       <!-- Search Customer -->
@@ -41,6 +41,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Birthday</th>
                     <th scope="col">Phones</th>
                   </tr>
@@ -51,6 +52,7 @@
                       <th class="text-center" scope="row">{{ i + 1 }}</th>
                       <td class="text-center">{{ cnt.name }}</td>
                       <td class="text-center">{{ cnt.email }}</td>
+                      <td class="text-center">{{ cnt.role }}</td>
                       <td class="text-center">
                         {{ getBirthday(cnt.birthday) }}
                       </td>
@@ -61,7 +63,7 @@
               </table>
             </ng-container>
             <ng-template #noContact>
-              <h3 class="text-center mt-5">There is no such contact...</h3>
+              <h3 class="text-center mt-5">There is no such Employee...</h3>
               <div class="loadingImage">
                 <img
                   class="loading img-fluid"

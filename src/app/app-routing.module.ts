@@ -7,12 +7,18 @@ import { LoginComponent } from './components/login/login.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { PnfComponent } from './components/pnf/pnf.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ReportsComponent } from './components/reports/reports.component';
 import { GauthGuard } from './guards/gauth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  {
+    path: 'dashboard/reports',
+    component: ReportsComponent,
+    canActivate: [GauthGuard],
+  },
   {
     path: 'dashboard/customers',
     component: CustomersComponent,
