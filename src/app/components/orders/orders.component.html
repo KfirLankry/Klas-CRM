@@ -28,7 +28,7 @@
                 aria-controls="pills-home"
                 aria-selected="true"
               >
-                Current Orders
+                Active Orders
               </button>
             </li>
           </div>
@@ -86,8 +86,7 @@
                 <tr class="borderdLine text-center">
                   <th scope="col">#</th>
                   <th scope="col">Customer Name</th>
-                  <th scope="col">Car Manufacture</th>
-                  <th scope="col">Car Model</th>
+                  <th scope="col">Car</th>
                   <th scope="col">Order Date</th>
                   <th scope="col">Period</th>
 
@@ -95,17 +94,27 @@
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngFor="let order of orders; index as i">
+                <ng-container *ngFor="let order of activeOrders; index as i">
                   <tr class="text-center">
                     <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ order.customerName }}</td>
-                    <td>{{ order.carManufacture }}</td>
-                    <td>{{ order.carModel }}</td>
-                    <td>{{ order.orderDate }}</td>
-                    <td>{{ order.rentTime }}</td>
-
+                    <td (click)="navToCustomerDetails(order.customer_id)">{{ getCustomerById(order.customer_id) }}</td>
                     <td>
-                      {{ order.totalPrice | currency }}
+                      <div>
+                        <img width="100px" src={{getCarById(order.car_id).picUrl}}>
+                      </div>
+                      <div>
+                        {{getCarById(order.car_id).manufacture}}
+                        {{getCarById(order.car_id).model}}
+                      </div>
+                    </td>
+                    <td>
+                      {{ getDate(order.start,'') }}
+                      <br>
+                      {{ getDate(order.end,'') }}
+                    </td>
+                    <td>{{dateDiffInDays(order.start, order.end)}} Days</td>
+                    <td>
+                      {{ order.sum | currency }}
                     </td>
                   </tr>
                 </ng-container>
@@ -134,22 +143,33 @@
                 <tr class="borderdLine text-center">
                   <th scope="col">#</th>
                   <th scope="col">Customer Name</th>
-                  <th scope="col">Car Manufacture</th>
-                  <th scope="col">Car Model</th>
+                  <th scope="col">Car</th>
                   <th scope="col">Order Date</th>
                   <th scope="col">Total Price</th>
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngFor="let order of orders; index as i">
+                <ng-container *ngFor="let order of pastOrders; index as i">
                   <tr class="text-center">
                     <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ order.customerName }}</td>
-                    <td>{{ order.carManufacture }}</td>
-                    <td>{{ order.carModel }}</td>
-                    <td>{{ order.orderDate }}</td>
+                    <td (click)="navToCustomerDetails(order.customer_id)">{{ getCustomerById(order.customer_id) }}</td>
                     <td>
-                      {{ order.totalPrice | currency: "ILS":"symbol" }}
+                      <div>
+                        <img width="100px" src={{getCarById(order.car_id).picUrl}}>
+                      </div>
+                      <div>
+                        {{getCarById(order.car_id).manufacture}}
+                        {{getCarById(order.car_id).model}}
+                      </div>
+                    </td>
+                    <td>
+                      {{ getDate(order.start,'') }}
+                      <br>
+                      {{ getDate(order.end,'') }}
+                    </td>
+                    <td>{{dateDiffInDays(order.start, order.end)}} Days</td>
+                    <td>
+                      {{ order.sum | currency }}
                     </td>
                   </tr>
                 </ng-container>
@@ -173,22 +193,33 @@
                 <tr class="borderdLine text-center">
                   <th scope="col">#</th>
                   <th scope="col">Customer Name</th>
-                  <th scope="col">Car Manufacture</th>
-                  <th scope="col">Car Model</th>
+                  <th scope="col">Car</th>
                   <th scope="col">Order Date</th>
                   <th scope="col">Total Price</th>
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngFor="let order of orders; index as i">
+                <ng-container *ngFor="let order of futureOrders; index as i">
                   <tr class="text-center">
                     <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ order.customerName }}</td>
-                    <td>{{ order.carManufacture }}</td>
-                    <td>{{ order.carModel }}</td>
-                    <td>{{ order.orderDate }}</td>
+                    <td (click)="navToCustomerDetails(order.customer_id)">{{ getCustomerById(order.customer_id) }}</td>
                     <td>
-                      {{ order.totalPrice | currency: "ILS":"symbol" }}
+                      <div>
+                        <img width="100px" src={{getCarById(order.car_id).picUrl}}>
+                      </div>
+                      <div>
+                        {{getCarById(order.car_id).manufacture}}
+                        {{getCarById(order.car_id).model}}
+                      </div>
+                    </td>
+                    <td>
+                      {{ getDate(order.start,'') }}
+                      <br>
+                      {{ getDate(order.end,'') }}
+                    </td>
+                    <td>{{dateDiffInDays(order.start, order.end)}} Days</td>
+                    <td>
+                      {{ order.sum | currency }}
                     </td>
                   </tr>
                 </ng-container>

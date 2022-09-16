@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Car } from 'src/app/interfaces/Car';
+import { Customer } from 'src/app/interfaces/Customer';
+import { Order } from 'src/app/interfaces/Order';
+import { AddCustomerService } from 'src/app/services/add-customer.service';
+import { CarsService } from 'src/app/services/cars.service';
+import { ordersService } from 'src/app/services/orders.service';
 
 @Component({
   selector: 'app-orders',
@@ -6,34 +13,80 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.css'],
 })
 export class OrdersComponent implements OnInit {
-  orders = [
-    {
-      customerName: 'Kfir Lankry',
-      carManufacture: 'Toyota',
-      carModel: 'Corolla',
-      rentTime: '5 Days',
-      orderDate: '12/9/2022',
-      totalPrice: 850,
-    },
-    {
-      customerName: 'Aviv Shleifman',
-      carManufacture: 'Mazda',
-      carModel: '6',
-      rentTime: '2 Days',
-      orderDate: '15/9/2022',
-      totalPrice: 450,
-    },
-    {
-      customerName: 'Jonathan Nahmias',
-      carManufacture: 'Kia',
-      carModel: 'Niro',
-      rentTime: '7 Days',
-      orderDate: '17/9/2022',
-      totalPrice: 1250,
-    },
-  ];
 
-  constructor() {}
+  pastOrders:Order[] = []
+  activeOrders:Order[] = []
+  futureOrders:Order[] = []
 
-  ngOnInit(): void {}
+  customers:Customer[] = []
+  cars:Car[] = []
+
+  constructor(private os:ordersService, private cusS: AddCustomerService, private carS:CarsService, private router:Router) {}
+
+  ngOnInit(): void {
+    this.os.getAll().subscribe((data:Order[])=>{
+      data.forEach((order)=>{
+        let today:Date = new Date()
+        let startDate:Date = new Date(this.getDate(order.start, 'diff'))
+        let endDate:Date = new Date(this.getDate(order.end, 'diff'))
+        if(startDate<today && endDate<today) this.pastOrders.push(order)
+        else if(startDate<today && endDate>today) this.activeOrders.push(order)
+        else this.futureOrders.push(order)
+      })
+    })
+    this.cusS.getCustomer().subscribe((data)=>{
+      this.customers = data
+    })
+    this.carS.getAll().subscribe((data)=>{
+      this.cars = data
+    })
+  }
+
+  getDate(timestamp:any, type:string):string{
+    let months= ["January","February","March","April","May","June","July", "August","September","October","November","December"]
+
+    let day = new Date(timestamp.seconds*1000).getDate()
+    let month = new Date(timestamp.seconds*1000).getMonth()
+    let year = new Date(timestamp.seconds*1000).getFullYear()
+
+    if(type=='diff') return `${month+1}/${day}/${year}`
+    return `${day}/${months[month]}/${year}`
+  }
+
+  dateDiffInDays(timestampStart:any, timestampEnd:any) {
+    let _MS_PER_DAY = 1000*60*60*24
+
+    let startDate:Date = new Date(this.getDate(timestampStart, 'diff'))
+    let endDate:Date = new Date(this.getDate(timestampEnd, 'diff'))
+
+    
+    const utc1 = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    const utc2 = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+  
+    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+  }
+
+  getCustomerById(ID:string){
+    if(!this.customers.length) return ''
+    let match = this.customers.filter((cus)=>{
+      return cus.id == ID
+    })
+    return `${match[0].firstName} ${match[0].lastName}`
+  }
+
+
+  getCarById(ID:string):Car|any{
+    if(!this.cars.length) return {}
+    let match = this.cars.filter((car)=> car.id == ID)
+    return match[0]
+  }
+
+  navToCustomerDetails(ID:string){
+    this.router.navigateByUrl(`/dashboard/customers/${ID}`)
+  }
+
+
+
+
+
 }
