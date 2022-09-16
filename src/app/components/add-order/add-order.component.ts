@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Car } from 'src/app/interfaces/Car';
 import { Customer } from 'src/app/interfaces/Customer';
 import { Order } from 'src/app/interfaces/Order';
 import { AddCustomerService } from 'src/app/services/add-customer.service';
 import { CarsService } from 'src/app/services/cars.service';
+import { ordersService } from 'src/app/services/orders.service';
 
 @Component({
   selector: 'app-add-order',
@@ -17,7 +19,7 @@ export class AddOrderComponent implements OnInit {
   cars: Car[] = []
   customers: Customer[] = []
 
-  constructor(private carS:CarsService, private cusS:AddCustomerService) { }
+  constructor(private carS:CarsService, private cusS:AddCustomerService, private os:ordersService, private modal:NgbModal) { }
 
   ngOnInit(): void {
     this.cusS.getCustomer().subscribe((data)=>{
@@ -38,11 +40,12 @@ export class AddOrderComponent implements OnInit {
     let modStartDate = new Date(startDate)
     let modEndDate = new Date(endDate)
 
-    const utc1 = Date.UTC(modStartDate.getFullYear(), modStartDate.getMonth(), modStartDate.getDate());
-    const utc2 = Date.UTC(modEndDate.getFullYear(), modEndDate.getMonth(), modEndDate.getDate());
+    let utc1 = Date.UTC(modStartDate.getFullYear(), modStartDate.getMonth(), modStartDate.getDate());
+    let utc2 = Date.UTC(modEndDate.getFullYear(), modEndDate.getMonth(), modEndDate.getDate());
 
     let sum = (Math.floor((utc2 - utc1) / _MS_PER_DAY))*price
     if(sum == 0) return price
+    // this.order.sum = sum
     return sum
   }
 
@@ -54,6 +57,12 @@ export class AddOrderComponent implements OnInit {
     return price
   }
 
-  onSubmit(){}
+  onSubmit(){
+    this.order.sum = this.calcOrderSum(this.order.start,this.order.end,this.getCarPriceById(this.order.car_id)) as number
+    this.order.start = new Date(this.order.start)
+    this.order.end = new Date(this.order.end)
+    this.os.addOrder(this.order)
+    this.modal.dismissAll()
+  }
 
 }

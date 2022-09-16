@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, DocumentReference, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Order } from '../interfaces/Order';
 
@@ -8,12 +8,18 @@ import { Order } from '../interfaces/Order';
 })
 export class ordersService {
   
-  customerRef = collection(this.firestore, 'orders');
+  orderRef = collection(this.firestore, 'orders');
 
   constructor(private firestore:Firestore) {}
   
   getAll(): Observable<Order[]> {
-    return collectionData(this.customerRef, { idField: 'id' }) as Observable<Order[]>
+    return collectionData(this.orderRef, { idField: 'id' }) as Observable<Order[]>
+  }
+
+  addOrder(order: Order): Promise<DocumentReference<Order>> {
+    return addDoc(this.orderRef, order) as Promise<
+      DocumentReference<Order>
+    >;
   }
 
 }
