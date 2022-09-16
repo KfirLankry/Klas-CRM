@@ -1,7 +1,7 @@
+<h2 class="text-center mt-4 mb-4">
+  <i class="fa-solid fa-plus"></i> New Order
+</h2>
 <div class="container">
-  <h2 class="text-center mt-4 mb-4">
-    <i class="fa-solid fa-user"></i> Add New Order
-  </h2>
   <form #addOrder="ngForm" class="formview form-group" (ngSubmit)="onSubmit()">
     <div class="form-floating mb-3">
       <input
@@ -35,29 +35,31 @@
         ><span style="color: red">*</span> End Date</label
       >
     </div>
-    <div class="form-floating mb-3">
-      <select
-        class="form-control"
-        name="customer"
-        id="customerInput"
-        [(ngModel)]="order.customer_id"
-        #customer="ngModel"
-        required
-      >
+    <div class="customer mb-3">
+      <select class="form-select" aria-label="Default select example">
+        <option value="" selected disabled>Choose Customer</option>
         <option *ngFor="let cus of customers" value="{{ cus.id }}">
           {{ cus.firstName + " " + cus.lastName }}
         </option>
       </select>
+      <a class="btn btn-dark" (click)="addNewCustomer(customer)">
+        <i class="fa-solid fa-plus"></i>
+      </a>
     </div>
-    <div class="form-floating mb-3">
+    <div class="mb-3">
       <select
-        class="form-control"
+        class="form-select"
+        aria-label="Default select example"
         name="car"
         id="carInput"
         [(ngModel)]="order.car_id"
         #car="ngModel"
         required
       >
+        <label for="floatingInput"
+          ><span style="color: red">*</span> End Date</label
+        >
+        <option value="" selected disabled>Choose Car</option>
         <option *ngFor="let car of cars" value="{{ car.id }}">
           {{ car.manufacture + " " + car.model }}
         </option>
@@ -82,29 +84,29 @@
           )
         "
       />
-      <label for="floatingInput"> Price</label>
+      <label for="floatingInput">Total Price</label>
     </div>
 
-    <div class="">
-      <textarea
-        name="note"
-        id="note"
-        placeholder="Customer Note.."
-        class="form-control w-100 mt-3"
-        [(ngModel)]="order.notes"
-        #notes="ngModel"
-        cols="20"
-        rows="10"
-        placeholder="Note.."
-      >
-      </textarea>
-    </div>
-    <button
-      [disabled]="!addOrder.valid || !endDate.dirty"
-      type="submit"
-      class="btn btn-dark mt-4 mb-4 w-50"
+    <textarea
+      name="note"
+      id="note"
+      placeholder="Customer Note.."
+      class="form-control w-100 mt-3"
+      [(ngModel)]="order.notes"
+      #notes="ngModel"
+      cols="20"
+      rows="10"
+      placeholder="Order Note.."
     >
-      Add
-    </button>
+    </textarea>
+    <div class="BtnDiv">
+      <button
+        [disabled]="!addOrder.valid || !endDate.dirty"
+        type="submit"
+        class="btn btn-dark mt-4 mb-4 w-100"
+      >
+        Add
+      </button>
+    </div>
   </form>
 </div>
