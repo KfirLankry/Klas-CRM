@@ -54,32 +54,6 @@ export class AddOrderComponent implements OnInit {
     return price
   }
 
-
-
-  // dateDiffInDays(timestampStart:any, timestampEnd:any) {
-  //   let _MS_PER_DAY = 1000*60*60*24
-
-    // let startDate:Date = new Date(this.getDate(timestampStart, 'diff'))
-    // let endDate:Date = new Date(this.getDate(timestampEnd, 'diff'))
-
-    
-  //   const utc1 = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-  //   const utc2 = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
-  
-  //   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
-  // }
-
-  // getDate(timestamp:any, type:string):string{
-  //   let months= ["January","February","March","April","May","June","July", "August","September","October","November","December"]
-
-  //   let day = new Date(timestamp.seconds*1000).getDate()
-  //   let month = new Date(timestamp.seconds*1000).getMonth()
-  //   let year = new Date(timestamp.seconds*1000).getFullYear()
-
-  //   if(type=='diff') return `${month+1}/${day}/${year}`
-  //   return `${day}/${months[month]}/${year}`
-  // }
-
   onSubmit(){}
 
 }
