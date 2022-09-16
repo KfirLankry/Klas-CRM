@@ -59,5 +59,9 @@
 .link:hover {
   color: #8067ff;
   transform: translateX(5px);
-  border-right: 7px solid #6648fe;
+  border-right: 10px solid #6648fe;
+}
+
+.active-link {
+  color: #8067ff;
 }
