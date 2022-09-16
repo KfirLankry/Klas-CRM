@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="text-center mt-4 mb-4">
-    <i class="fa-solid fa-user"></i> Add New Order
+    <i class="fa-solid fa-plus"></i> Add New Order
   </h2>
   <form #addOrder="ngForm" class="formview form-group" (ngSubmit)="onSubmit()">
     <div class="form-floating mb-3">
@@ -35,12 +35,16 @@
         ><span style="color: red">*</span> End Date</label
       >
     </div>
-    <div class="mb-3">
+    <div class="customer mb-3">
       <select class="form-select" aria-label="Default select example">
+        <option value="" selected disabled>Choose Customer</option>
         <option *ngFor="let cus of customers" value="{{ cus.id }}">
           {{ cus.firstName + " " + cus.lastName }}
         </option>
       </select>
+      <button class="btn btn-dark" (click)="addNewCustomer(customer)">
+        <i class="fa-solid fa-plus"></i>
+      </button>
     </div>
     <div class="mb-3">
       <select
@@ -55,6 +59,7 @@
         <label for="floatingInput"
           ><span style="color: red">*</span> End Date</label
         >
+        <option value="" selected disabled>Choose Car</option>
         <option *ngFor="let car of cars" value="{{ car.id }}">
           {{ car.manufacture + " " + car.model }}
         </option>
