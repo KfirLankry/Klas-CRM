@@ -30,7 +30,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { AddOrderComponent } from './components/add-order/add-order.component';
 import { ReportsComponent } from './components/reports/reports.component';
 
-import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, AccumulationChartModule, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService } from '@syncfusion/ej2-angular-charts';
+import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, AccumulationChartModule, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService, MultiLevelLabelService, SelectionService } from '@syncfusion/ej2-angular-charts';
 
 
 @NgModule({
@@ -69,7 +69,7 @@ import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLab
     ChartModule,
     AccumulationChartModule
   ],
-  providers: [LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService],
+  providers: [LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService, MultiLevelLabelService, SelectionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
