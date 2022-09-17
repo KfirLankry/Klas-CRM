@@ -127,33 +127,7 @@ export class AddOrderComponent implements OnInit {
     })
 
     relevantOrders.forEach((order)=>{
-
-
-      // let x = order.start as any
-      // let myDate = this.getDate(order.start) as any
-      // myDate = myDate.split("/");
-      // var newDate = new Date( myDate[2], myDate[1] - 1, myDate[0]);
-      // console.log(newDate.getTime() +' $$$ '+ x.seconds)
-
-      console.log(this.getDate(order.start) + ' $$ ' + this.getDate(order.end) + ' $$ ' + startDate)
-
-
-      if((new Date(this.getDate(order.start)) <= new Date(startDate) && new Date(this.getDate(order.end)) >= new Date(startDate)) || (new Date(this.getDate(order.start)) <= new Date(endDate) && new Date(this.getDate(order.end)) >= new Date(endDate))) result = false
-
-      // (new Date(this.getDate(order.start)) >= new Date(startDate) && new Date(this.getDate(order.end)) <= new Date(endDate))
-
-
-      // let a_start = new Date(this.getDate(order.start))
-      // let a_end = new Date(this.getDate(order.end))
-      // let b_start = startDate
-      // let b_end = endDate
-
-
-      // if (a_start <= b_start && b_start <= a_end) return false; // b starts in a
-      // if (a_start <= b_end && b_end <= a_end) return false; // b ends in a
-      // if (b_start < a_start && a_end < b_end) return false; // a in b
-      
-      // return true;
+      if((new Date(this.getDate(order.start)) <= new Date(startDate) && new Date(this.getDate(order.end)) >= new Date(startDate)) || (new Date(this.getDate(order.start)) <= new Date(endDate) && new Date(this.getDate(order.end)) >= new Date(endDate)) || (new Date(this.getDate(order.start)) >= new Date(startDate) && new Date(this.getDate(order.start)) <= new Date(endDate))) result = false
     })
     return result
   }
