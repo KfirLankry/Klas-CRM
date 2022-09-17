@@ -63,9 +63,7 @@
         required
         [disabled]="!startDate.dirty || !endDate.dirty"
       >
-        <option *ngFor="let car of cars" value="{{ car.id }}" [disabled]="!checkCarAvailabillity(startDate.value,endDate.value,car.id)" class="carOption">
-          <span>{{ car.manufacture + " " + car.model }}</span>
-        </option>
+        <option *ngFor="let car of cars" value="{{ car.id }}" [disabled]="!checkCarAvailabillity(startDate.value,endDate.value,car.id)" class="carOption" [innerText]="car.manufacture + ' ' + car.model"></option>
       </select>
     </div>
 
