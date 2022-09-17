@@ -98,11 +98,15 @@ a:hover {
     justify-content: center;
   }
 
-  @media only screen and (max-width: 769px) {
+  @media only screen and (max-width: 991px) {
     input,
     .btn,
     .alert {
       width: 22.5rem;
+    }
+
+    .hidden {
+      display: none;
     }
   }
 }
