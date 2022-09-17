@@ -26,7 +26,7 @@ export class ReportsComponent implements OnInit {
     label:{
       visible:true,
       position:'Inside',
-      template: '<div>${point.x}</div><div>${point.y} Orders</div>'
+      template: '<div class="text-center"><div>${point.x}</div><div>${point.y} Orders</div></div>'
     },
     legend:{
       visible:true,
@@ -49,7 +49,7 @@ export class ReportsComponent implements OnInit {
       visible:true,
       position:'Inside',
       name: 'sum',
-      template: '<div>${point.x}</div><div>${point.y}$</div>'
+      template: '<div class="text-center"><div>${point.x}</div><div>${point.y}$</div></div>'
     },
     enableSmartLabels: true,
     legend:{
