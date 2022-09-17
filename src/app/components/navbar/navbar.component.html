@@ -1,8 +1,8 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a routerLink="/dashboard/customers" class="navbar-brand"
-      ><img class="logo" src="../../../assets/img/logo.png" alt="" /> Klas
-      CRM</a
+      ><img class="logo" src="../../../assets/img/logo.png" alt="" />
+      <span style="font-weight: bold"> KLAS</span> Car Rental CRM</a
     >
     <button
       class="navbar-toggler"
@@ -61,13 +61,13 @@
           class="notification position-relative"
           [ngbPopover]="message"
           triggers="mouseenter:mouseleave"
-          [popoverTitle]="activeOrders.length +' Active Orders'"
+          [popoverTitle]="activeOrders.length + ' Active Orders'"
         >
           <i class="fa-solid fa-bell fa-lg"></i>
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
           >
-          {{activeOrders.length}}
+            {{ activeOrders.length }}
             <span class="visually-hidden">unread messages</span>
           </span>
         </button>

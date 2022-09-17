@@ -30,9 +30,23 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { AddOrderComponent } from './components/add-order/add-order.component';
 import { ReportsComponent } from './components/reports/reports.component';
 
-import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, AccumulationChartModule, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService, MultiLevelLabelService, SelectionService } from '@syncfusion/ej2-angular-charts';
+import {
+  ChartModule,
+  LineSeriesService,
+  CategoryService,
+  LegendService,
+  DataLabelService,
+  TooltipService,
+  AccumulationChartModule,
+  PieSeriesService,
+  AccumulationDataLabelService,
+  AccumulationLegendService,
+  AccumulationTooltipService,
+  ColumnSeriesService,
+  MultiLevelLabelService,
+  SelectionService,
+} from '@syncfusion/ej2-angular-charts';
 import { ProfileComponent } from './components/profile/profile.component';
-
 
 @NgModule({
   declarations: [
@@ -69,9 +83,22 @@ import { ProfileComponent } from './components/profile/profile.component';
     provideFirestore(() => getFirestore()),
     NgbModule,
     ChartModule,
-    AccumulationChartModule
+    AccumulationChartModule,
   ],
-  providers: [LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService, MultiLevelLabelService, SelectionService],
+  providers: [
+    LineSeriesService,
+    CategoryService,
+    LegendService,
+    DataLabelService,
+    TooltipService,
+    PieSeriesService,
+    AccumulationDataLabelService,
+    AccumulationLegendService,
+    AccumulationTooltipService,
+    ColumnSeriesService,
+    MultiLevelLabelService,
+    SelectionService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

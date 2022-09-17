@@ -25,6 +25,10 @@
   box-shadow: 1px 1px 7px 2px rgba(0, 0, 0, 0.12);
 }
 
+.greyTable {
+  background-color: rgb(235, 235, 235);
+}
+
 .borderdLine {
   border-bottom: 3px solid black;
 }
@@ -49,8 +53,8 @@
 
 @media only screen and (max-width: 991px) {
   .header {
-    margin: 0 0 0 0.8rem;
-    width: 95vw;
+    margin: 0 0 0 0.3rem;
+    /* width: 95vw; */
     height: 5rem;
   }
 

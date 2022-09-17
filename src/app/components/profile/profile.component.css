@@ -25,7 +25,8 @@
   color: #3d4157;
 }
 
-.userCard {
+.userCard,
+.logoutBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,12 +47,13 @@
 }
 
 .image {
+  border-radius: 10px;
   width: 9rem;
 }
 
 @media only screen and (max-width: 991px) {
   .header {
-    margin: 0 0 0 1rem;
+    margin: 0 0 0 0.7rem;
     width: 95vw;
     height: 5rem;
   }
@@ -66,5 +68,9 @@
 
   .body {
     margin: 2rem 0 0 0;
+  }
+
+  .card {
+    height: 14rem;
   }
 }

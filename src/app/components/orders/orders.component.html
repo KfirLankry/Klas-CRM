@@ -91,8 +91,8 @@
                     <th scope="col">Car Model</th>
                     <th scope="col">Order Date</th>
                     <th scope="col">Period</th>
-
                     <th scope="col">Total Price</th>
+                    <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -128,6 +128,20 @@
                       <td>{{ dateDiffInDays(order.start, order.end) }} Days</td>
                       <td>
                         {{ order.sum | currency }}
+                      </td>
+                      <td>
+                        <!-- Edit / View / Delete BTNS -->
+                        <div class="btns">
+                          <button type="submit" class="btn btn-secondary mx-1">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                          </button>
+                          <button
+                            (click)="deleteOrder(order)"
+                            class="btn btn-danger"
+                          >
+                            <i class="fa-solid fa-trash-can"></i>
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   </ng-container>
@@ -168,7 +182,7 @@
                 </thead>
                 <tbody>
                   <ng-container *ngFor="let order of pastOrders; index as i">
-                    <tr class="text-center">
+                    <tr class="text-center greyTable">
                       <th scope="row">{{ i + 1 }}</th>
                       <td
                         class="link"
@@ -228,6 +242,7 @@
                     <th scope="col">Order Date</th>
                     <th scope="col">Period</th>
                     <th scope="col">Total Price</th>
+                    <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -264,6 +279,18 @@
                       <td>
                         {{ order.sum | currency }}
                       </td>
+                      <!-- Edit / View / Delete BTNS -->
+                      <div class="btns">
+                        <button type="submit" class="btn btn-secondary mx-1">
+                          <i class="fa-regular fa-pen-to-square"></i>
+                        </button>
+                        <button
+                          (click)="deleteOrder(order)"
+                          class="btn btn-danger"
+                        >
+                          <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                      </div>
                     </tr>
                   </ng-container>
                 </tbody>
