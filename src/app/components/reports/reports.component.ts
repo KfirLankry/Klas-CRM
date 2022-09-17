@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IAccTextRenderEventArgs } from '@syncfusion/ej2-charts';
+import { IAccTextRenderEventArgs, IPointRenderEventArgs } from '@syncfusion/ej2-charts';
 import { Car } from 'src/app/interfaces/Car';
 import { Customer } from 'src/app/interfaces/Customer';
 import { Order } from 'src/app/interfaces/Order';
@@ -80,12 +80,18 @@ export class ReportsComponent implements OnInit {
       enable:true,
       format: '<b>${point.x}</b> Has Made <b>${point.y}</b> Orders'
     },
-    colorMap: 'color'
+    palletes: ["#254469", "#4C5F75", "#5E7691", "#1D3552","#3C70AB","#294D75", "#254469", "#4C5F75", "#5E7691", "#1D3552","#3C70AB","#294D75"],
+    cornerRadius:{
+      topLeft: 10, topRight: 10
+    }
   }
 
   onTextRender(args: IAccTextRenderEventArgs){
     // args.color = 'red';
   }
+  pointRender(args: IPointRenderEventArgs): void {
+    args.fill = this.customersChart.palletes[args.point.index];
+};
 
   ngOnInit(): void {
     this.oS.getAll().subscribe((data)=>{
