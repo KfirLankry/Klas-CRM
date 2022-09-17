@@ -64,7 +64,7 @@
         [disabled]="!startDate.dirty || !endDate.dirty"
       >
         <option *ngFor="let car of cars" value="{{ car.id }}" [disabled]="!checkCarAvailabillity(startDate.value,endDate.value,car.id)" class="carOption">
-          {{ car.manufacture + " " + car.model }}
+          <span>{{ car.manufacture + " " + car.model }}</span>
         </option>
       </select>
     </div>

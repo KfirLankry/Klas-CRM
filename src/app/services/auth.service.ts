@@ -67,11 +67,11 @@ export class AuthService {
 
   // Get Session Storage Session
   getSessionData(key: string): string {
-    return sessionStorage.getItem(key) as string;
+    return localStorage.getItem(key) as string;
   }
 
   // Set Session Storage Session
   setSessionData(key: string, value: string): void {
-    sessionStorage.setItem(key, value);
+    localStorage.setItem(key, value);
   }
 }
