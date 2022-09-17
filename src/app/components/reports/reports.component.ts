@@ -25,7 +25,7 @@ export class ReportsComponent implements OnInit {
     carCount:0,
     label:{
       visible:true,
-      position:'Outside',
+      position:'Inside',
       template: '<div>${point.x}</div><div>${point.y} Orders</div>'
     },
     legend:{
@@ -38,7 +38,8 @@ export class ReportsComponent implements OnInit {
       enable:true,
       format: '<span>${point.x} Ordered ${point.y} Times</span>'
     },
-    colorMap: 'color'
+    colorMap: 'color',
+    palletes: ["#254469", "#4C5F75", "#5E7691", "#1D3552","#3C70AB","#294D75"]
   }
 
   carsIncomeChart:any = {
@@ -46,7 +47,7 @@ export class ReportsComponent implements OnInit {
     carCount:0,
     label:{
       visible:true,
-      position:'Outside',
+      position:'Inside',
       name: 'sum',
       template: '<div>${point.x}</div><div>${point.y}$</div>'
     },
@@ -61,7 +62,8 @@ export class ReportsComponent implements OnInit {
       enable:true,
       format: '<span>${point.x} Has Made ${point.y}$ in Revenues</span>'
     },
-    colorMap: 'color'
+    colorMap: 'color',
+    palletes: ["#254469", "#4C5F75", "#5E7691", "#1D3552","#3C70AB","#294D75"]
   }
 
   customersChart:any = {
