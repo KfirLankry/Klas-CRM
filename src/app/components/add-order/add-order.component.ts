@@ -107,26 +107,39 @@ export class AddOrderComponent implements OnInit {
     let month = new Date(timestamp.seconds*1000).getMonth()
     let year = new Date(timestamp.seconds*1000).getFullYear() 
     
-    return day<10? `${month}/0${day}/${year}` : `${month}/${day}/${year}`
+    return `${month}/${day}/${year}`
   }
 
-  checkCarAvailabillity(startDate:Date, endDate:Date, carID:string|undefined):boolean{
+  checkCarAvailabillity(startDate:Date, endDate:Date, carID:string|undefined):boolean|void{
 
     let relevantOrders:Order[] = []
-    let result:boolean = true
+    // let result:boolean = true
     
     this.allOrders.forEach((order)=>{
       if(order.car_id == carID) relevantOrders.push(order)
     })
 
     relevantOrders.forEach((order)=>{
+
+      // console.log(relevantOrders);
       
-      if(new Date(this.getDate(order.start))<=endDate && new Date(this.getDate(order.end))>=startDate) result =  false
+      
+      // if(new Date(this.getDate(order.start))<=endDate && new Date(this.getDate(order.end))>=startDate) result =  false
+
+      // if((new Date(this.getDate(order.start)) <= new Date(startDate) && new Date(this.getDate(order.end)) >= new Date(startDate)) || (new Date(this.getDate(order.start)) <= new Date(endDate) && new Date(this.getDate(order.end)) >= new Date(endDate))) result = false
+
+//       let a_start = new Date(this.getDate(order.start))
+//       let a_end = new Date(this.getDate(order.end))
+//       let b_start = startDate
+//       let b_end = endDate
+
+
+//       if (a_start <= b_start && b_start <= a_end) return false; // b starts in a
+//       if (a_start <= b_end && b_end <= a_end) return false; // b ends in a
+//       if (b_start < a_start && a_end < b_end) return false; // a in b
+      
+//       return true;
     })
-
-    console.log(result);
-    
-
-    return result
+    return true
   }
 }
