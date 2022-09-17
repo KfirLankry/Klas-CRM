@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IAccTextRenderEventArgs } from '@syncfusion/ej2-charts';
 import { Car } from 'src/app/interfaces/Car';
 import { Customer } from 'src/app/interfaces/Customer';
 import { Order } from 'src/app/interfaces/Order';
@@ -24,17 +25,41 @@ export class ReportsComponent implements OnInit {
     carCount:0,
     label:{
       visible:true,
-      position:'Inside',
+      position:'Outside',
+      template: '<div>${point.x}</div><div>${point.y} Orders</div>'
     },
     legend:{
       visible:true,
       position:'Bottom',
       height:'8%',
-      width:'35%'
+      width:'100%'
     },
     tooltip:{
       enable:true,
       format: '<span>${point.x} Ordered ${point.y} Times</span>'
+    },
+    colorMap: 'color'
+  }
+
+  carsIncomeChart:any = {
+    cars: [],
+    carCount:0,
+    label:{
+      visible:true,
+      position:'Outside',
+      name: 'sum',
+      template: '<div>${point.x}</div><div>${point.y}$</div>'
+    },
+    enableSmartLabels: true,
+    legend:{
+      visible:true,
+      position:'Bottom',
+      height:'8%',
+      width:'100%'
+    },
+    tooltip:{
+      enable:true,
+      format: '<span>${point.x} Has Made ${point.y}$ in Revenues</span>'
     },
     colorMap: 'color'
   }
@@ -56,6 +81,9 @@ export class ReportsComponent implements OnInit {
     colorMap: 'color'
   }
 
+  onTextRender(args: IAccTextRenderEventArgs){
+    // args.color = 'red';
+  }
 
   ngOnInit(): void {
     this.oS.getAll().subscribe((data)=>{
@@ -64,14 +92,20 @@ export class ReportsComponent implements OnInit {
     this.carS.getAll().subscribe((data)=>{
       this.cars = data
       this.carsChart.cars = []
+      this.carsIncomeChart.cars = []
       data.forEach((car)=>{
         let amount = 0
 
+        let incomeSum = 0
+
         this.orders.forEach((order)=>{
-          if(order.car_id==car.id) 
+          if(order.car_id==car.id) {
           amount++
+          incomeSum+=order.sum
+        }
         })
         this.carsChart.cars.push({name:`${car.manufacture} ${car.model}`,amount:amount})
+        this.carsIncomeChart.cars.push({name:`${car.manufacture} ${car.model}`,sum:incomeSum})
       })
     })
     this.cusS.getCustomer().subscribe((data)=>{

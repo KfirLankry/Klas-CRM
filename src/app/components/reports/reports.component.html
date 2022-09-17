@@ -13,8 +13,9 @@
         </div>
       </div>
 
-      <div class="orders mt-4">
-        <ejs-accumulationchart
+      <div class="orders mt-4 d-flex justify-content-center">
+        <div>
+          <ejs-accumulationchart
           [title]="''"
           [legendSettings]="carsChart.legend"
           [tooltip]="carsChart.tooltip"
@@ -31,6 +32,28 @@
             </e-accumulation-series>
           </e-accumulation-series-collection>
         </ejs-accumulationchart>
+        </div>
+        <div>
+          <ejs-accumulationchart
+          [enableSmartLabels]='carsIncomeChart.enableSmartLabels'
+          (textRender)="onTextRender($event)"
+          [title]="''"
+          [legendSettings]="carsIncomeChart.legend"
+          [tooltip]="carsIncomeChart.tooltip"
+        >
+          <e-accumulation-series-collection>
+            <e-accumulation-series
+              type="Pie"
+              [dataSource]="carsIncomeChart.cars"
+              [dataLabel]="carsIncomeChart.label"
+              xName="name"
+              yName="sum"
+              innerRadius="50%"
+            >
+            </e-accumulation-series>
+          </e-accumulation-series-collection>
+        </ejs-accumulationchart>
+        </div>
       </div>
 
       <div class="graph mt-4">
