@@ -105,15 +105,22 @@ export class AddOrderComponent implements OnInit {
   getDate(timestamp:any){
     let day = new Date(timestamp.seconds*1000).getDate()
     let month = new Date(timestamp.seconds*1000).getMonth()
-    let year = new Date(timestamp.seconds*1000).getFullYear() 
+    let year = new Date(timestamp.seconds*1000).getFullYear()
     
-    return `${month}/${day}/${year}`
+    let Xmonth = (month+1) as unknown as string
+    let Xday = (day) as unknown as string
+
+    if(month<9) Xmonth= '0'+Xmonth
+    if(day<10) Xday= '0'+Xday
+  
+    
+    return `${year}-${Xmonth}-${Xday}`
   }
 
   checkCarAvailabillity(startDate:Date, endDate:Date, carID:string|undefined):boolean|void{
 
     let relevantOrders:Order[] = []
-    // let result:boolean = true
+    let result:boolean = true
     
     this.allOrders.forEach((order)=>{
       if(order.car_id == carID) relevantOrders.push(order)
@@ -121,25 +128,33 @@ export class AddOrderComponent implements OnInit {
 
     relevantOrders.forEach((order)=>{
 
-      // console.log(relevantOrders);
+
+      // let x = order.start as any
+      // let myDate = this.getDate(order.start) as any
+      // myDate = myDate.split("/");
+      // var newDate = new Date( myDate[2], myDate[1] - 1, myDate[0]);
+      // console.log(newDate.getTime() +' $$$ '+ x.seconds)
+
+      console.log(this.getDate(order.start) + ' $$ ' + this.getDate(order.end) + ' $$ ' + startDate)
+
+
+      if((new Date(this.getDate(order.start)) <= new Date(startDate) && new Date(this.getDate(order.end)) >= new Date(startDate)) || (new Date(this.getDate(order.start)) <= new Date(endDate) && new Date(this.getDate(order.end)) >= new Date(endDate))) result = false
+
+      // (new Date(this.getDate(order.start)) >= new Date(startDate) && new Date(this.getDate(order.end)) <= new Date(endDate))
+
+
+      // let a_start = new Date(this.getDate(order.start))
+      // let a_end = new Date(this.getDate(order.end))
+      // let b_start = startDate
+      // let b_end = endDate
+
+
+      // if (a_start <= b_start && b_start <= a_end) return false; // b starts in a
+      // if (a_start <= b_end && b_end <= a_end) return false; // b ends in a
+      // if (b_start < a_start && a_end < b_end) return false; // a in b
       
-      
-      // if(new Date(this.getDate(order.start))<=endDate && new Date(this.getDate(order.end))>=startDate) result =  false
-
-      // if((new Date(this.getDate(order.start)) <= new Date(startDate) && new Date(this.getDate(order.end)) >= new Date(startDate)) || (new Date(this.getDate(order.start)) <= new Date(endDate) && new Date(this.getDate(order.end)) >= new Date(endDate))) result = false
-
-//       let a_start = new Date(this.getDate(order.start))
-//       let a_end = new Date(this.getDate(order.end))
-//       let b_start = startDate
-//       let b_end = endDate
-
-
-//       if (a_start <= b_start && b_start <= a_end) return false; // b starts in a
-//       if (a_start <= b_end && b_end <= a_end) return false; // b ends in a
-//       if (b_start < a_start && a_end < b_end) return false; // a in b
-      
-//       return true;
+      // return true;
     })
-    return true
+    return result
   }
 }
