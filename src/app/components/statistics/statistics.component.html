@@ -1,11 +1,13 @@
 <div class="box card">
-  <div class="card card-header text-center title mb-4">Stats</div>
+  <div class="card-header text-center title">Stats</div>
   <div class="box__body">
-    <div class="stats stats--main">
-      <div class="stats__amount">{{totalRevenue}}$</div>
+    <div class="stats stats--main mt-4">
+      <div class="stats__amount">{{ totalRevenue }}$</div>
       <div class="stats__caption">Revenue</div>
       <div class="stats__change">
-        <div class="stats__value stats__value--positive">{{getRevenueThisMonth()}}$</div>
+        <div class="stats__value stats__value--positive">
+          {{ getRevenueThisMonth() }}$
+        </div>
         <div class="stats__period">This Month</div>
       </div>
     </div>
@@ -14,7 +16,9 @@
       <div class="stats__amount">{{ this.costumers.length }}</div>
       <div class="stats__caption">Total Customers</div>
       <div class="stats__change">
-        <div class="stats__value stats__value--negative">{{thisMonthCustomers.length}}</div>
+        <div class="stats__value stats__value--negative">
+          {{ thisMonthCustomers.length }}
+        </div>
         <div class="stats__period">This Month</div>
       </div>
     </div>
@@ -29,17 +33,17 @@
     </div> -->
 
     <div class="stats">
-      <div class="stats__amount">{{activeOrders.length}}</div>
+      <div class="stats__amount">{{ activeOrders.length }}</div>
       <div class="stats__caption">Active Orders</div>
       <div class="stats__change">
-        <div class="stats__value">{{thisMonthOrders.length}}</div>
+        <div class="stats__value">{{ thisMonthOrders.length }}</div>
         <div class="stats__period">This Month</div>
       </div>
     </div>
     <hr />
     <div class="stats mt-4">
       <div class="stats__amount text-center">
-        {{orders.length}}
+        {{ orders.length }}
       </div>
       <div class="stats__caption text-center">Total Orders</div>
       <div class="stats__change"></div>
