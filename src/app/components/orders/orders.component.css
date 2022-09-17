@@ -30,6 +30,7 @@
 }
 
 .noCarImage {
+  animation: fadeInRight 0.5s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
