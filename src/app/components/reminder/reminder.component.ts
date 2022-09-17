@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Order } from 'src/app/interfaces/Order';
 import { Reminder } from 'src/app/interfaces/Reminder';
 import { AuthService } from 'src/app/services/auth.service';
+import { ordersService } from 'src/app/services/orders.service';
 import { EditReminderComponent } from '../edit-reminder/edit-reminder.component';
 
 @Component({
@@ -12,7 +14,9 @@ import { EditReminderComponent } from '../edit-reminder/edit-reminder.component'
 export class ReminderComponent implements OnInit {
   reminder: Reminder = { reminder: '' };
   reminderArr: Reminder[] = [];
-  constructor(private modal: NgbModal, private auth: AuthService) {}
+
+
+  constructor(private modal: NgbModal, private auth: AuthService, private oS:ordersService) {}
 
   ngOnInit(): void {
     this.auth.getReminder().subscribe((reminderData: Reminder[]) => {
@@ -28,4 +32,5 @@ export class ReminderComponent implements OnInit {
     });
     modalRef.componentInstance.id = reminder.id;
   }
+
 }

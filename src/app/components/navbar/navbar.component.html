@@ -59,15 +59,15 @@
         <button
           type="button"
           class="notification position-relative"
-          [ngbPopover]="test"
+          [ngbPopover]="message"
           triggers="mouseenter:mouseleave"
-          popoverTitle="Notifications"
+          [popoverTitle]="activeOrders.length +' Active Orders'"
         >
           <i class="fa-solid fa-bell fa-lg"></i>
           <span
             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
           >
-            1
+          {{activeOrders.length}}
             <span class="visually-hidden">unread messages</span>
           </span>
         </button>
