@@ -61,12 +61,9 @@
         [(ngModel)]="order.car_id"
         #car="ngModel"
         required
+        [disabled]="!startDate.dirty || !endDate.dirty"
       >
-        <label for="floatingInput"
-          ><span style="color: red">*</span> End Date</label
-        >
-
-        <option *ngFor="let car of cars" value="{{ car.id }}">
+        <option *ngFor="let car of cars" value="{{ car.id }}" [disabled]="!checkCarAvailabillity(startDate.value,endDate.value,car.id)">
           {{ car.manufacture + " " + car.model }}
         </option>
       </select>

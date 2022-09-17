@@ -14,6 +14,7 @@ import { AddCustomerComponent } from '../add-customer/add-customer.component';
   styleUrls: ['./add-order.component.css'],
 })
 export class AddOrderComponent implements OnInit {
+  allOrders: Order[] = []
   order: Order = {
     start: new Date(),
     end: new Date(),
@@ -40,6 +41,9 @@ export class AddOrderComponent implements OnInit {
     this.carS.getAll().subscribe((data) => {
       this.cars = data;
     });
+    this.os.getAll().subscribe((data)=>{
+      this.allOrders = data
+    })
   }
 
   calcOrderSum(startDate: Date, endDate: Date, price: number) {
@@ -96,5 +100,33 @@ export class AddOrderComponent implements OnInit {
       centered: true,
       windowClass: 'dark-modal',
     });
+  }
+
+  getDate(timestamp:any){
+    let day = new Date(timestamp.seconds*1000).getDate()
+    let month = new Date(timestamp.seconds*1000).getMonth()
+    let year = new Date(timestamp.seconds*1000).getFullYear() 
+    
+    return day<10? `${month}/0${day}/${year}` : `${month}/${day}/${year}`
+  }
+
+  checkCarAvailabillity(startDate:Date, endDate:Date, carID:string|undefined):boolean{
+
+    let relevantOrders:Order[] = []
+    let result:boolean = true
+    
+    this.allOrders.forEach((order)=>{
+      if(order.car_id == carID) relevantOrders.push(order)
+    })
+
+    relevantOrders.forEach((order)=>{
+      
+      if(new Date(this.getDate(order.start))<=endDate && new Date(this.getDate(order.end))>=startDate) result =  false
+    })
+
+    console.log(result);
+    
+
+    return result
   }
 }

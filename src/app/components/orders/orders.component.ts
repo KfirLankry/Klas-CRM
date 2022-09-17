@@ -27,6 +27,9 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.os.getAll().subscribe((data:Order[])=>{
+      this.pastOrders = []
+      this.activeOrders = []
+      this.futureOrders = []
       data.forEach((order)=>{
         let today:Date = new Date()
         let startDate:Date = new Date(this.getDate(order.start, 'diff'))
