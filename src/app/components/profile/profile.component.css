@@ -34,6 +34,7 @@
 }
 
 .card {
+  animation: fadeInRight 0.5s ease-in-out;
   background: linear-gradient(
       to left,
       #555d87 0%,
@@ -49,6 +50,15 @@
 .image {
   border-radius: 10px;
   width: 9rem;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 991px) {

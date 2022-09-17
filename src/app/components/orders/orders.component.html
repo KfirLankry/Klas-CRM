@@ -79,75 +79,84 @@
             tabindex="0"
           >
             <!-- Current Order Table -->
-            <div class="tableDiv">
-              <table
-                class="table table-hover table-bordered table-responsive mt-2"
-              >
-                <thead>
-                  <tr class="borderdLine text-center">
-                    <th scope="col">#</th>
-                    <th scope="col">Customer Name</th>
-                    <th scope="col">Car Image</th>
-                    <th scope="col">Car Model</th>
-                    <th scope="col">Order Date</th>
-                    <th scope="col">Period</th>
-                    <th scope="col">Total Price</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <ng-container *ngFor="let order of activeOrders; index as i">
-                    <tr class="text-center">
-                      <th scope="row">{{ i + 1 }}</th>
-                      <td
-                        class="link"
-                        (click)="navToCustomerDetails(order.customer_id)"
-                      >
-                        {{ getCustomerById(order.customer_id) }}
-                      </td>
-                      <td>
-                        <div>
-                          <img
-                            width="75px"
-                            src="{{ getCarById(order.car_id).picUrl }}"
-                          />
-                        </div>
-                      </td>
-                      <!-- https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_low/v1/editorial/vhs/Mitsubishi-Lancer.png -->
-                      <td>
-                        <div>
-                          {{ getCarById(order.car_id).manufacture }}
-                          {{ getCarById(order.car_id).model }}
-                        </div>
-                      </td>
-                      <td>
-                        {{ getDate(order.start, "") }}
-                        -
-                        {{ getDate(order.end, "") }}
-                      </td>
-                      <td>{{ dateDiffInDays(order.start, order.end) }} Days</td>
-                      <td>
-                        {{ order.sum | currency }}
-                      </td>
-                      <td>
-                        <!-- Edit / View / Delete BTNS -->
-                        <div class="btns">
-                          <button type="submit" class="btn btn-secondary mx-1">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                          </button>
-                          <button
-                            (click)="deleteOrder(order)"
-                            class="btn btn-danger"
-                          >
-                            <i class="fa-solid fa-trash-can"></i>
-                          </button>
-                        </div>
-                      </td>
+            <ng-container *ngIf="activeOrders.length != 0; else noOrders">
+              <div class="tableDiv">
+                <table
+                  class="table table-hover table-bordered table-responsive mt-2"
+                >
+                  <thead>
+                    <tr class="borderdLine text-center">
+                      <th scope="col">#</th>
+                      <th scope="col">Customer Name</th>
+                      <th scope="col">Car Image</th>
+                      <th scope="col">Car Model</th>
+                      <th scope="col">Order Date</th>
+                      <th scope="col">Period</th>
+                      <th scope="col">Total Price</th>
+                      <th scope="col">Actions</th>
                     </tr>
-                  </ng-container>
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    <ng-container
+                      *ngFor="let order of activeOrders; index as i"
+                    >
+                      <tr class="text-center">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td
+                          class="link"
+                          (click)="navToCustomerDetails(order.customer_id)"
+                        >
+                          {{ getCustomerById(order.customer_id) }}
+                        </td>
+                        <td>
+                          <div>
+                            <img
+                              width="75px"
+                              src="{{ getCarById(order.car_id).picUrl }}"
+                            />
+                          </div>
+                        </td>
+                        <!-- https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_low/v1/editorial/vhs/Mitsubishi-Lancer.png -->
+                        <td>
+                          <div>
+                            {{ getCarById(order.car_id).manufacture }}
+                            {{ getCarById(order.car_id).model }}
+                          </div>
+                        </td>
+                        <td>
+                          {{ getDate(order.start, "") }}
+                          -
+                          {{ getDate(order.end, "") }}
+                        </td>
+                        <td>
+                          {{ dateDiffInDays(order.start, order.end) }} Days
+                        </td>
+                        <td>
+                          {{ order.sum | currency }}
+                        </td>
+                        <td>
+                          <!-- Edit / View / Delete BTNS -->
+                          <div class="btns">
+                            <button
+                              type="submit"
+                              class="btn btn-secondary mx-1"
+                            >
+                              <i class="fa-regular fa-pen-to-square"></i>
+                            </button>
+                            <button
+                              (click)="deleteOrder(order)"
+                              class="btn btn-danger"
+                            >
+                              <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </ng-container>
 
             <!-- New Order BTN -->
             <div class="newOrderBtn mt-5">
@@ -165,59 +174,63 @@
             tabindex="0"
           >
             <!-- Past Order Table -->
-            <div class="tableDiv">
-              <table
-                class="table table-hover table-bordered table-responsive mt-2"
-              >
-                <thead>
-                  <tr class="borderdLine text-center">
-                    <th scope="col">#</th>
-                    <th scope="col">Customer Name</th>
-                    <th scope="col">Car Image</th>
-                    <th scope="col">Car Model</th>
-                    <th scope="col">Order Date</th>
-                    <th scope="col">Period</th>
-                    <th scope="col">Total Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <ng-container *ngFor="let order of pastOrders; index as i">
-                    <tr class="text-center greyTable">
-                      <th scope="row">{{ i + 1 }}</th>
-                      <td
-                        class="link"
-                        (click)="navToCustomerDetails(order.customer_id)"
-                      >
-                        {{ getCustomerById(order.customer_id) }}
-                      </td>
-                      <td>
-                        <div>
-                          <img
-                            width="75px"
-                            src="{{ getCarById(order.car_id).picUrl }}"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{ getCarById(order.car_id).manufacture }}
-                          {{ getCarById(order.car_id).model }}
-                        </div>
-                      </td>
-                      <td>
-                        {{ getDate(order.start, "") }}
-                        -
-                        {{ getDate(order.end, "") }}
-                      </td>
-                      <td>{{ dateDiffInDays(order.start, order.end) }} Days</td>
-                      <td>
-                        {{ order.sum | currency }}
-                      </td>
+            <ng-container *ngIf="pastOrders.length != 0; else noOrders">
+              <div class="tableDiv">
+                <table
+                  class="table table-hover table-bordered table-responsive mt-2"
+                >
+                  <thead>
+                    <tr class="borderdLine text-center">
+                      <th scope="col">#</th>
+                      <th scope="col">Customer Name</th>
+                      <th scope="col">Car Image</th>
+                      <th scope="col">Car Model</th>
+                      <th scope="col">Order Date</th>
+                      <th scope="col">Period</th>
+                      <th scope="col">Total Price</th>
                     </tr>
-                  </ng-container>
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let order of pastOrders; index as i">
+                      <tr class="text-center greyTable">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td
+                          class="link"
+                          (click)="navToCustomerDetails(order.customer_id)"
+                        >
+                          {{ getCustomerById(order.customer_id) }}
+                        </td>
+                        <td>
+                          <div>
+                            <img
+                              width="75px"
+                              src="{{ getCarById(order.car_id).picUrl }}"
+                            />
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            {{ getCarById(order.car_id).manufacture }}
+                            {{ getCarById(order.car_id).model }}
+                          </div>
+                        </td>
+                        <td>
+                          {{ getDate(order.start, "") }}
+                          -
+                          {{ getDate(order.end, "") }}
+                        </td>
+                        <td>
+                          {{ dateDiffInDays(order.start, order.end) }} Days
+                        </td>
+                        <td>
+                          {{ order.sum | currency }}
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </ng-container>
           </div>
 
           <!-- Future Orders Content -->
@@ -229,76 +242,88 @@
             tabindex="0"
           >
             <!-- Future Order Table -->
-            <div class="tableDiv">
-              <table
-                class="table table-hover table-bordered table-responsive mt-2"
-              >
-                <thead>
-                  <tr class="borderdLine text-center">
-                    <th scope="col">#</th>
-                    <th scope="col">Customer Name</th>
-                    <th scope="col">Car Image</th>
-                    <th scope="col">Car Model</th>
-                    <th scope="col">Order Date</th>
-                    <th scope="col">Period</th>
-                    <th scope="col">Total Price</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <ng-container *ngFor="let order of futureOrders; index as i">
-                    <tr class="text-center">
-                      <th scope="row">{{ i + 1 }}</th>
-                      <td
-                        class="link"
-                        (click)="navToCustomerDetails(order.customer_id)"
-                      >
-                        {{ getCustomerById(order.customer_id) }}
-                      </td>
-
-                      <td>
-                        <div>
-                          <img
-                            width="75px"
-                            src="{{ getCarById(order.car_id).picUrl }}"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          {{ getCarById(order.car_id).manufacture }}
-                          {{ getCarById(order.car_id).model }}
-                        </div>
-                      </td>
-                      <td>
-                        {{ getDate(order.start, "") }}
-                        -
-                        {{ getDate(order.end, "") }}
-                      </td>
-                      <td>{{ dateDiffInDays(order.start, order.end) }} Days</td>
-                      <td>
-                        {{ order.sum | currency }}
-                      </td>
-                      <!-- Edit / View / Delete BTNS -->
-                      <div class="btns">
-                        <button type="submit" class="btn btn-secondary mx-1">
-                          <i class="fa-regular fa-pen-to-square"></i>
-                        </button>
-                        <button
-                          (click)="deleteOrder(order)"
-                          class="btn btn-danger"
-                        >
-                          <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                      </div>
+            <ng-container *ngIf="futureOrders.length != 0; else noOrders">
+              <div class="tableDiv">
+                <table
+                  class="table table-hover table-bordered table-responsive mt-2"
+                >
+                  <thead>
+                    <tr class="borderdLine text-center">
+                      <th scope="col">#</th>
+                      <th scope="col">Customer Name</th>
+                      <th scope="col">Car Image</th>
+                      <th scope="col">Car Model</th>
+                      <th scope="col">Order Date</th>
+                      <th scope="col">Period</th>
+                      <th scope="col">Total Price</th>
+                      <th scope="col">Actions</th>
                     </tr>
-                  </ng-container>
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    <ng-container
+                      *ngFor="let order of futureOrders; index as i"
+                    >
+                      <tr class="text-center">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td
+                          class="link"
+                          (click)="navToCustomerDetails(order.customer_id)"
+                        >
+                          {{ getCustomerById(order.customer_id) }}
+                        </td>
+
+                        <td>
+                          <div>
+                            <img
+                              width="75px"
+                              src="{{ getCarById(order.car_id).picUrl }}"
+                            />
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            {{ getCarById(order.car_id).manufacture }}
+                            {{ getCarById(order.car_id).model }}
+                          </div>
+                        </td>
+                        <td>
+                          {{ getDate(order.start, "") }}
+                          -
+                          {{ getDate(order.end, "") }}
+                        </td>
+                        <td>
+                          {{ dateDiffInDays(order.start, order.end) }} Days
+                        </td>
+                        <td>
+                          {{ order.sum | currency }}
+                        </td>
+                        <!-- Edit / View / Delete BTNS -->
+                        <div class="btns">
+                          <button type="submit" class="btn btn-secondary mx-1">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                          </button>
+                          <button
+                            (click)="deleteOrder(order)"
+                            class="btn btn-danger"
+                          >
+                            <i class="fa-solid fa-trash-can"></i>
+                          </button>
+                        </div>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </ng-container>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<ng-template #noOrders>
+  <h3 class="text-center mt-5">There is no such Orders...</h3>
+  <div class="noCarImage">
+    <img class="noCar img-fluid" src="../../../assets/img/nocar.png" alt="" />
+  </div>
+</ng-template>

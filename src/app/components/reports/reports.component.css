@@ -27,6 +27,7 @@
 
 .orders,
 .graph {
+  animation: fadeInRight 0.5s ease-in-out;
   width: 100%;
   box-shadow: 1px 1px 7px 2px rgba(0, 0, 0, 0.12);
   background: linear-gradient(
@@ -38,6 +39,15 @@
     )
     left bottom rgb(234, 234, 234) no-repeat;
   background-size: 100% 5px; /* if linear-gradient, we need to resize it */
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 991px) {

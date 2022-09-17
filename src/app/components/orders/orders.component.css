@@ -29,6 +29,16 @@
   background-color: rgb(235, 235, 235);
 }
 
+.noCarImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noCar {
+  width: 40%;
+}
+
 .borderdLine {
   border-bottom: 3px solid black;
 }
