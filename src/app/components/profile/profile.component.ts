@@ -14,4 +14,7 @@ export class ProfileComponent implements OnInit {
   getUserName(): string {
     return this.as.getSessionData('email');
   }
+  getUserPic(): string{
+    return this.as.getSessionData('profilePic')
+  }
 }

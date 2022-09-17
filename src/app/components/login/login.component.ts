@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
         });
         this.as.setSessionData('email', data.user.email as string);
         this.as.setSessionData('isLoggedIn', 'true');
+        this.as.setSessionData('profilePic', '../../../assets/img/149071.png')
         this.router.navigateByUrl('dashboard/customers');
       })
       .catch(() => {
@@ -54,6 +55,7 @@ export class LoginComponent implements OnInit {
         });
         this.as.setSessionData('email', data.user.displayName as string);
         this.as.setSessionData('isLoggedIn', 'true');
+        this.as.setSessionData('profilePic', data.user['photoURL'] as string);
         this.router.navigateByUrl('dashboard/customers');
       })
       .catch((err) => {

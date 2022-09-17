@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
       .then((data) => {
         this.as.setSessionData('email', data.user.email as string);
         this.as.setSessionData('isLoggedIn', 'true');
+        this.as.setSessionData('profilePic', '../../../assets/img/149071.png')
         this.router.navigateByUrl('dashboard/customers');
         this.toastr.success('Registration went Successfuly!', '', {
           progressBar: true,
