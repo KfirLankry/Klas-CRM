@@ -27,6 +27,8 @@ export class AddOrderComponent implements OnInit {
   cars: Car[] = [];
   customers: Customer[] = [];
 
+  carsAvailabillity:any = []
+
   constructor(
     private carS: CarsService,
     private cusS: AddCustomerService,
@@ -40,10 +42,14 @@ export class AddOrderComponent implements OnInit {
     });
     this.carS.getAll().subscribe((data) => {
       this.cars = data;
+      data.forEach((car)=>{
+        this.carsAvailabillity.push({id:car.id, available:true})
+      })
     });
     this.os.getAll().subscribe((data)=>{
       this.allOrders = data
     })
+    
   }
 
   calcOrderSum(startDate: Date, endDate: Date, price: number) {
@@ -129,6 +135,17 @@ export class AddOrderComponent implements OnInit {
     relevantOrders.forEach((order)=>{
       if((new Date(this.getDate(order.start)) <= new Date(startDate) && new Date(this.getDate(order.end)) >= new Date(startDate)) || (new Date(this.getDate(order.start)) <= new Date(endDate) && new Date(this.getDate(order.end)) >= new Date(endDate)) || (new Date(this.getDate(order.start)) >= new Date(startDate) && new Date(this.getDate(order.start)) <= new Date(endDate))) result = false
     })
+
+      this.carsAvailabillity.forEach((car:any)=>{
+        if(car.id==carID && !result) car.available = false
+        else if(car.id==carID && result) car.available = true
+      })
+
+
     return result
+  }
+
+  checkIfAllCarsAreDisabled():boolean{
+    return this.carsAvailabillity.every((car:any)=> car.available)
   }
 }

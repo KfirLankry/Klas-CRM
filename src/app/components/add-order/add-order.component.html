@@ -52,18 +52,18 @@
         <i class="fa-solid fa-plus"></i>
       </a>
     </div>
-    <div class="mb-3">
+    <div class="mb-3" >
       <select
         class="form-select"
         aria-label="Default select example"
         name="car"
         id="carInput"
         [(ngModel)]="order.car_id"
-        #car="ngModel"
+        #carInput="ngModel"
         required
         [disabled]="!startDate.dirty || !endDate.dirty"
       >
-        <option *ngFor="let car of cars" value="{{ car.id }}" [disabled]="!checkCarAvailabillity(startDate.value,endDate.value,car.id)">
+        <option *ngFor="let car of cars" value="{{ car.id }}" [disabled]="!checkCarAvailabillity(startDate.value,endDate.value,car.id)" class="carOption">
           {{ car.manufacture + " " + car.model }}
         </option>
       </select>
@@ -83,7 +83,7 @@
           calcOrderSum(
             startDate.value,
             endDate.value,
-            getCarPriceById(car.value)
+            getCarPriceById(carInput.value)
           )
         "
       />

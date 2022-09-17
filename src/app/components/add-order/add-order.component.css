@@ -14,3 +14,7 @@
 input {
   width: 400px;
 }
+
+option:disabled{
+  color: rgb(180, 180, 180);
+}
