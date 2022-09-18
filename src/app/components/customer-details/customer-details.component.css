@@ -68,19 +68,32 @@
   animation: fadeInRight 0.5s ease-in-out;
 }
 
-table {
+table,
+.badge {
   animation: fadeInRight 0.5s ease-in-out;
   box-shadow: 1px 1px 7px 2px rgba(0, 0, 0, 0.12);
 }
 
-.past-order{
-  background-color: rgba(0, 153, 255, 0.16);
+.map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0.5rem;
 }
-.active-order{
-  background-color: rgba(208, 255, 0, 0.16);
+
+a {
+  cursor: pointer;
 }
-.future-order{
-  background-color: rgba(51, 255, 0, 0.16);
+
+.past-order {
+  background-color: rgba(39, 169, 255, 0.202);
+}
+.active-order {
+  background-color: rgba(114, 255, 27, 0.202);
+}
+.future-order {
+  background-color: rgba(255, 187, 0, 0.202);
 }
 
 @keyframes fadeInRight {

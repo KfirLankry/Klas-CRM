@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pnf',
@@ -7,10 +8,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./pnf.component.css'],
 })
 export class PnfComponent implements OnInit {
-  constructor(private _location: Location) {}
+  constructor(private _location: Location, private router: Router) {}
 
   ngOnInit(): void {}
   goBack() {
-    this._location.back();
+    this.router.navigateByUrl('dashboard/reports');
   }
 }

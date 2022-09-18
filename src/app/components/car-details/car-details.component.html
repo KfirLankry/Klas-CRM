@@ -1,2 +1,28 @@
-<p>{{ car.manufacture }}</p>
-<p>{{ car.model }}</p>
+<div class="image">
+  <img style="max-width: 500px" src="{{ car.picUrl }}" />
+</div>
+<div class="card-body">
+  <h2 class="card-title title text-center mb-3">
+    {{ car.manufacture }} {{ car.model }}
+  </h2>
+
+  <div class="row text-center">
+    <div class="card-text mt-2 col-lg-4 subTitle">
+      <span class="fw-bold">Cargo:</span> {{ car.cargo }}
+    </div>
+    <div class="card-text mt-2 col-lg-4 subTitle">
+      <span class="fw-bold">Seats:</span> {{ car.seats }}
+    </div>
+    <div class="card-text mt-2 col-lg-4 subTitle">
+      <span class="fw-bold">Doors:</span> {{ car.doors }}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="card-text mt-2 col-lg-4 subTitle">
+      <span class="fw-bold">Year: </span> {{ car.year }}
+    </div>
+    <div class="card-text mt-2 col-lg-4 subTitle">
+      <span class="fw-bold">Price Per Day: </span> {{ car.price }} $
+    </div>
+  </div>
+</div>

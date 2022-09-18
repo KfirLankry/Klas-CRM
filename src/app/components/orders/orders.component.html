@@ -111,7 +111,7 @@
                         </td>
                         <td>
                           <div>
-                            <a (click)="carDetails()">
+                            <a (click)="carDetails(order.car_id)">
                               <img
                                 width="75px"
                                 src="{{ getCarById(order.car_id).picUrl }}"
@@ -205,10 +205,12 @@
                         </td>
                         <td>
                           <div>
-                            <img
-                              width="75px"
-                              src="{{ getCarById(order.car_id).picUrl }}"
-                            />
+                            <a (click)="carDetails(order.car_id)">
+                              <img
+                                width="75px"
+                                src="{{ getCarById(order.car_id).picUrl }}"
+                              />
+                            </a>
                           </div>
                         </td>
                         <td>
@@ -277,10 +279,12 @@
 
                         <td>
                           <div>
-                            <img
-                              width="75px"
-                              src="{{ getCarById(order.car_id).picUrl }}"
-                            />
+                            <a (click)="carDetails(order.car_id)">
+                              <img
+                                width="75px"
+                                src="{{ getCarById(order.car_id).picUrl }}"
+                              />
+                            </a>
                           </div>
                         </td>
                         <td>

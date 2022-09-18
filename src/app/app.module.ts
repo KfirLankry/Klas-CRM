@@ -48,6 +48,8 @@ import {
 } from '@syncfusion/ej2-angular-charts';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { CarDetailsComponent } from './components/car-details/car-details.compon
     ReportsComponent,
     ProfileComponent,
     CarDetailsComponent,
+    ArchiveComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

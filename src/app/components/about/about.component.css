@@ -1,0 +1,26 @@
+.content {
+  width: 99%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 8rem;
+  background: linear-gradient(
+      to left,
+      #555d87 0%,
+      #005e98 12%,
+      #0ca2ff 47%,
+      #575e86 100%
+    )
+    left bottom rgb(234, 234, 234) no-repeat;
+  background-size: 100% 5px; /* if linear-gradient, we need to resize it */
+}
+
+.title {
+  font-weight: 700;
+  color: #3d4157;
+}

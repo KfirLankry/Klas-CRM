@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './components/about/about.component';
+import { ArchiveComponent } from './components/archive/archive.component';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
@@ -49,6 +51,16 @@ const routes: Routes = [
   {
     path: 'dashboard/cardetail',
     component: CarDetailsComponent,
+    canActivate: [GauthGuard],
+  },
+  {
+    path: 'dashboard/archive',
+    component: ArchiveComponent,
+    canActivate: [GauthGuard],
+  },
+  {
+    path: 'dashboard/about',
+    component: AboutComponent,
     canActivate: [GauthGuard],
   },
   { path: '**', component: PnfComponent },

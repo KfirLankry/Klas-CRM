@@ -116,12 +116,13 @@ export class OrdersComponent implements OnInit {
     return match[0];
   }
 
-  carDetails() {
+  carDetails(id: string) {
     const modalRef = this.modal.open(CarDetailsComponent, {
       size: 'lg',
       centered: true,
       windowClass: 'dark-modal',
     });
+    modalRef.componentInstance.id = id;
   }
 
   navToCustomerDetails(ID: string) {
