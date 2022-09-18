@@ -23,7 +23,6 @@ export class EditReminderComponent implements OnInit {
     if (this.id) {
       this.auth.getReminderId(this.id).subscribe((reminderData: Reminder) => {
         this.reminder = reminderData;
-        console.log(this.reminder);
       });
     }
   }

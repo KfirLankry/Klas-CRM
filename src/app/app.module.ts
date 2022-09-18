@@ -47,6 +47,7 @@ import {
   SelectionService,
 } from '@syncfusion/ej2-angular-charts';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CarDetailsComponent } from './components/car-details/car-details.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     AddOrderComponent,
     ReportsComponent,
     ProfileComponent,
+    CarDetailsComponent,
   ],
   imports: [
     BrowserModule,

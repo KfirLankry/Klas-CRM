@@ -25,7 +25,7 @@
                   <div class="col-md-4 image">
                     <img
                       src="../../../assets/img/149071.png"
-                      class="img-fluid rounded-start mx-3 mt-3"
+                      class="img-fluid rounded-start mx-3 mt-3 hidden"
                       alt="..."
                     />
                   </div>
@@ -79,7 +79,56 @@
           </div>
         </ng-container>
       </ng-container>
-      <div class="backBtn mt-2">
+
+      <ng-container *ngIf="ordersArr.length != 0; else noOrder">
+        <div class="orderTable">
+          <h3 class="text-center mt-3 mb-4 title">Customer Orders</h3>
+          <table class="table table-hover table-bordered table-responsive mt-2">
+            <thead>
+              <tr class="borderdLine text-center">
+                <th scope="col">#</th>
+                <th scope="col">Order Dates</th>
+                <th scope="col">Car Image</th>
+                <th scope="col">Car Model</th>
+                <th scope="col">Total Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let order of ordersArr; index as i">
+                <tr class="text-center">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ getDate(order.start) }} - {{ getDate(order.end) }}</td>
+                  <td>
+                    <img
+                      width="75px"
+                      src="{{ getCarById(order.car_id).picUrl }}"
+                    />
+                  </td>
+                  <td>
+                    <div>
+                      {{ getCarById(order.car_id).manufacture }}
+                      {{ getCarById(order.car_id).model }}
+                    </div>
+                  </td>
+
+                  <td>{{ order.sum | currency }}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+      <ng-template #noOrder>
+        <h3 class="text-center mt-5">This Customer has no Orders...</h3>
+        <div class="noOrderImage">
+          <img
+            class="noOrder img-fluid"
+            src="../../../assets/img/list.png"
+            alt=""
+          />
+        </div>
+      </ng-template>
+      <div class="backBtn mt-5 mb-4">
         <button (click)="goBack()" class="btn btn-dark btns btn-warning">
           <i class="fa-solid fa-arrow-left"></i> Go Back
         </button>

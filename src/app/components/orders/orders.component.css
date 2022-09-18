@@ -49,6 +49,10 @@
   color: #3d4157;
 }
 
+a {
+  cursor: pointer;
+}
+
 .tabs,
 .nav,
 .newOrderBtn {

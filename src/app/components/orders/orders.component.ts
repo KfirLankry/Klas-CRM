@@ -9,6 +9,7 @@ import { AddCustomerService } from 'src/app/services/add-customer.service';
 import { CarsService } from 'src/app/services/cars.service';
 import { ordersService } from 'src/app/services/orders.service';
 import { AddOrderComponent } from '../add-order/add-order.component';
+import { CarDetailsComponent } from '../car-details/car-details.component';
 
 @Component({
   selector: 'app-orders',
@@ -113,6 +114,14 @@ export class OrdersComponent implements OnInit {
     if (!this.cars.length) return {};
     let match = this.cars.filter((car) => car.id == ID);
     return match[0];
+  }
+
+  carDetails() {
+    const modalRef = this.modal.open(CarDetailsComponent, {
+      size: 'lg',
+      centered: true,
+      windowClass: 'dark-modal',
+    });
   }
 
   navToCustomerDetails(ID: string) {
