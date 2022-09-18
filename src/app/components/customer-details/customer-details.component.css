@@ -86,6 +86,10 @@ a {
   cursor: pointer;
 }
 
+.lightgrey {
+  color: rgb(87, 87, 87);
+}
+
 .past-order {
   background-color: rgba(39, 169, 255, 0.202);
 }
