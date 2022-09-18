@@ -91,13 +91,13 @@ a {
 }
 
 .past-order {
-  background-color: rgba(39, 169, 255, 0.202);
+  background-color: #eeeeee;
 }
 .active-order {
-  background-color: rgba(114, 255, 27, 0.202);
+  background-color: #adddd0;
 }
 .future-order {
-  background-color: rgba(255, 187, 0, 0.202);
+  background-color: #9cb3ffc1;
 }
 
 @keyframes fadeInRight {
