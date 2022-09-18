@@ -101,7 +101,7 @@
                     <ng-container
                       *ngFor="let order of activeOrders; index as i"
                     >
-                      <tr class="text-center">
+                      <tr class="text-center active-order">
                         <th scope="row">{{ i + 1 }}</th>
                         <td
                           class="link"
@@ -195,7 +195,7 @@
                   </thead>
                   <tbody>
                     <ng-container *ngFor="let order of pastOrders; index as i">
-                      <tr class="text-center greyTable">
+                      <tr class="text-center past-order">
                         <th scope="row">{{ i + 1 }}</th>
                         <td
                           class="link"
@@ -268,7 +268,7 @@
                     <ng-container
                       *ngFor="let order of futureOrders; index as i"
                     >
-                      <tr class="text-center">
+                      <tr class="text-center future-order">
                         <th scope="row">{{ i + 1 }}</th>
                         <td
                           class="link"

@@ -49,6 +49,16 @@
   color: #3d4157;
 }
 
+.past-order {
+  background-color: #eeeeee;
+}
+.active-order {
+  background-color: #adddd0;
+}
+.future-order {
+  background-color: #9cb3ffc1;
+}
+
 a {
   cursor: pointer;
 }
