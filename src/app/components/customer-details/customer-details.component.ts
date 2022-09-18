@@ -79,9 +79,8 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   getCarById(ID: string): Car | any {
-    if (!this.cars.length) return {};
-    let match = this.cars.filter((car) => car.id == ID);
-    return match[0];
+    if (!this.cars.length) return {}
+    return this.cars.filter((car) => car.id == ID)[0]
   }
 
   goBack() {
