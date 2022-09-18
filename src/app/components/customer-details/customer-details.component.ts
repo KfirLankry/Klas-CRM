@@ -30,6 +30,11 @@ export class CustomerDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.ordersArr = []
+    this.pastOrders = []
+    this.activeOrders = []
+    this.futureOrders = []
+
     this.os.getAll().subscribe((data: Order[]) => {
       for (let order of data) {
         if (order.customer_id == this.customerId) {
@@ -38,9 +43,9 @@ export class CustomerDetailsComponent implements OnInit {
       
       }
       
-      this.pastOrders = [];
-      this.activeOrders = [];
-      this.futureOrders = [];
+      this.pastOrders = []
+      this.activeOrders = []
+      this.futureOrders = []
       this.ordersArr.forEach((order) => {
         let today: Date = new Date();
         let startDate: Date = new Date(this.getDate(order.start, 'diff'));

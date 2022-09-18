@@ -94,7 +94,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngIf="activeOrders.length" class="text-center fw-bold">Active Orders</tr>
+              <tr *ngIf="activeOrders.length" class="text-center text-muted"><td colspan="5">Active Orders</td></tr>
               <ng-container *ngFor="let order of activeOrders; index as i">
                 <tr class="text-center active-order">
                   <th scope="row">{{ i + 1 }}</th>
@@ -115,7 +115,7 @@
                   <td>{{ order.sum | currency }}</td>
                 </tr>
               </ng-container>
-              <tr *ngIf="futureOrders.length" class="text-center fw-bold">Future Orders</tr>
+              <tr *ngIf="futureOrders.length" class="text-center text-muted"><td colspan="5">Future Orders</td></tr>
               <ng-container *ngFor="let order of futureOrders; index as i">
                 <tr class="text-center future-order">
                   <th scope="row">{{ i + 1 }}</th>
@@ -136,7 +136,7 @@
                   <td>{{ order.sum | currency }}</td>
                 </tr>
               </ng-container>
-              <tr *ngIf="pastOrders.length" class="text-center fw-bold">Past Orders</tr>
+              <tr *ngIf="pastOrders.length" class="text-center text-muted"><td colspan="5">Past Orders</td></tr>
               <ng-container *ngFor="let order of pastOrders; index as i">
                 <tr class="text-center past-order">
                   <th scope="row">{{ i + 1 }}</th>
@@ -157,6 +157,7 @@
                   <td>{{ order.sum | currency }}</td>
                 </tr>
               </ng-container>
+              <tr *ngIf="ordersArr.length" class="text-center text-muted"><td colspan="5">{{ordersArr.length}} Orders In Total</td></tr>
             </tbody>
           </table>
         </div>
