@@ -21,6 +21,13 @@
         <div class="links">
           <a
             class="link"
+            routerLink="/dashboard/reports"
+            routerLinkActive="active-link"
+            ><i class="fa-solid fa-chart-line"></i
+            ><span class="mx-3">Reports</span></a
+          >
+          <a
+            class="link"
             routerLink="/dashboard/customers"
             routerLinkActive="active-link"
             ><i class="fa-solid fa-users"></i
@@ -40,17 +47,23 @@
             ><i class="fa-solid fa-headset"></i
             ><span class="mx-3">Orders</span></a
           >
-          <a
-            class="link"
-            routerLink="/dashboard/reports"
-            routerLinkActive="active-link"
-            ><i class="fa-solid fa-chart-line"></i
-            ><span class="mx-3">Reports</span></a
+          <a class="link" routerLink="/dashboard/archive"
+            ><i class="fa-solid fa-box-archive"></i
+            ><span class="mx-3">Archive</span></a
           >
 
           <a class="link" routerLink="/dashboard/profile"
             ><i class="fa-solid fa-user"></i
             ><span class="mx-3">Profile</span></a
+          >
+
+          <a class="link" routerLink="/dashboard/about"
+            ><i class="fa-solid fa-circle-info"></i
+            ><span class="mx-3">About KLAS</span></a
+          >
+          <a class="link" (click)="logout()">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i
+            ><span class="mx-3">Logout</span></a
           >
         </div>
       </div>
