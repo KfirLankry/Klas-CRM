@@ -86,7 +86,7 @@ table,
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
   .profileImage {
     width: 7rem;
     margin: 1.5rem 0 0 0;
@@ -115,5 +115,9 @@ table,
 
   .mobileBtn {
     width: 80%;
+  }
+
+  input {
+    width: 50%;
   }
 }

@@ -15,9 +15,16 @@ input {
   width: 400px;
 }
 
-option:disabled{
+option:disabled {
   color: rgb(180, 180, 180);
   font-weight: lighter;
+}
+
+@media only screen and (max-width: 991px) {
+  textarea,
+  input {
+    width: 330px;
+  }
 }
 
 /* option:disabled span::before{

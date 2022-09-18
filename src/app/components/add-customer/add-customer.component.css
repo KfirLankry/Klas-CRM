@@ -18,4 +18,8 @@ textarea,
   .btn {
     width: 80vw;
   }
+
+  input {
+    width: 330px;
+  }
 }
