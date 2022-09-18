@@ -18,6 +18,9 @@ export class CustomerDetailsComponent implements OnInit {
   ordersArr: Order[] = [];
   cars: Car[] = [];
   customerId: any = '';
+  pastOrders: Order[] = [];
+  activeOrders: Order[] = [];
+  futureOrders: Order[] = [];
   constructor(
     private actRoute: ActivatedRoute,
     private cs: AddCustomerService,
@@ -32,7 +35,22 @@ export class CustomerDetailsComponent implements OnInit {
         if (order.customer_id == this.customerId) {
           this.ordersArr.push(order);
         }
+      
       }
+      
+      this.pastOrders = [];
+      this.activeOrders = [];
+      this.futureOrders = [];
+      this.ordersArr.forEach((order) => {
+        let today: Date = new Date();
+        let startDate: Date = new Date(this.getDate(order.start, 'diff'));
+        let endDate: Date = new Date(this.getDate(order.end, 'diff'));
+        if (startDate < today && endDate < today) this.pastOrders.push(order);
+        else if (startDate < today && endDate > today)
+          this.activeOrders.push(order);
+        else this.futureOrders.push(order);
+    });
+
     });
 
     this.carS.getAll().subscribe((data) => {
@@ -47,10 +65,13 @@ export class CustomerDetailsComponent implements OnInit {
     // console.log(this.customerId);
   }
 
-  getDate(timestamp: any) {
+  getDate(timestamp: any, type: string): string {
+
     let day = new Date(timestamp.seconds * 1000).getDate();
     let month = new Date(timestamp.seconds * 1000).getMonth();
     let year = new Date(timestamp.seconds * 1000).getFullYear();
+
+    if (type == 'diff') return `${month + 1}/${day}/${year}`;
 
     return day < 10
       ? `0${day}/${month + 1}/${year}`

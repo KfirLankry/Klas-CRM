@@ -73,6 +73,16 @@ table {
   box-shadow: 1px 1px 7px 2px rgba(0, 0, 0, 0.12);
 }
 
+.past-order{
+  background-color: rgba(0, 153, 255, 0.16);
+}
+.active-order{
+  background-color: rgba(208, 255, 0, 0.16);
+}
+.future-order{
+  background-color: rgba(51, 255, 0, 0.16);
+}
+
 @keyframes fadeInRight {
   from {
     opacity: 0;
