@@ -84,12 +84,12 @@ export class StatisticsComponent implements OnInit {
   isActive(timestamp1:any, timestamp2:any) {
 
     let today = new Date()
-    today.setHours(0, 0, 0, 0)
+    // today.setHours(0, 0, 0, 0)
     // console.log(today + ' $$$ ' + new Date(timestamp1.seconds*1000))
 
-    if(timestamp2 == '') return (new Date(timestamp1.seconds*1000) > today)
+    if(timestamp2 == '') return (new Date(timestamp1.seconds*1000) >= today)
 
-    return (new Date(timestamp1.seconds*1000) > today && new Date(timestamp2.seconds*1000) <= today)
+    return (new Date(timestamp1.seconds*1000) >= today && new Date(timestamp2.seconds*1000) <= today)
   }
 
   getCustomersThisMonth(){

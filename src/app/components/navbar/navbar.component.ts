@@ -59,8 +59,10 @@ export class NavbarComponent implements OnInit {
       })
     })
 
+    console.log(this.activeCars);
+    
   
-    this.message += 'Active Cars: '
+    // this.message += 'Active Cars: '
 
     this.activeCars.forEach((carName)=>{
       this.message += `${carName}, `
@@ -77,15 +79,14 @@ export class NavbarComponent implements OnInit {
         this.activeOrders.push(order)
       }
     })
-
   }
 
   isActive(timestamp1:any, timestamp2:any) {
     let today = new Date()
-    today.setHours(0, 0, 0, 0)
+    // today.setHours(0, 0, 0, 0)
 
     if(timestamp2 == '') return (new Date(timestamp1.seconds*1000) > today)
 
-    return (new Date(timestamp1.seconds*1000) > today && new Date(timestamp2.seconds*1000) <= today)
+    return (new Date(timestamp1.seconds*1000) >= today && new Date(timestamp2.seconds*1000) <= today)
   }
 }
