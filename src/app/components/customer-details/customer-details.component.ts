@@ -44,7 +44,7 @@ export class CustomerDetailsComponent implements OnInit {
     });
 
     this.customerId = this.actRoute.snapshot.params['id'];
-    console.log(this.customerId);
+    // console.log(this.customerId);
   }
 
   getDate(timestamp: any) {

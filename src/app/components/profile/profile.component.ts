@@ -11,7 +11,7 @@ export class ProfileComponent implements OnInit {
   constructor(private as: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log(this.as.getSessionData('pic'));
+    // console.log(this.as.getSessionData('pic'));
   }
 
   getUserName(): string {
