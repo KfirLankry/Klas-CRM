@@ -23,3 +23,9 @@
 .subTitle {
   font-size: large;
 }
+
+@media only screen and (max-width: 991px) {
+  .carImage {
+    height: 12rem;
+  }
+}
