@@ -58,10 +58,7 @@ export class NavbarComponent implements OnInit {
         }
       })
     })
-
-    console.log(this.activeCars);
     
-  
     // this.message += 'Active Cars: '
 
     this.activeCars.forEach((carName)=>{
