@@ -11,35 +11,25 @@
           <small>User Profile Information.</small>
         </div>
       </div>
-      <div class="userCard mt-5">
-        <div class="card mb-3" style="width: 550px">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img
-                src="{{ getUserPic() }}"
-                class="img-fluid rounded-start mx-4 mt-2 image"
-                alt="..."
-              />
-            </div>
-            <div class="body col-md-8">
-              <div class="card-body">
-                <h5 class="card-title text-center">Currently Logged In As:</h5>
-                <p
-                  class="card-text title text-center"
-                  style="font-size: 1.5rem"
-                >
-                  {{ getUserName() }}
-                </p>
-                <div class="logoutBtn">
-                  <button (click)="logout()" class="btn btn-dark">
-                    Logout
-                  </button>
-                </div>
-              </div>
-            </div>
+      <!-- Card -->
+      <figure class="snip1344">
+        <img
+          src="{{ getUserPic() }}"
+          alt="profile-sample1"
+          class="background"
+        /><img
+          src="{{ getUserPic() }}"
+          alt="profile-sample1"
+          class="profile profileImage"
+        />
+        <figcaption>
+          <h5 class="mt-2">Currently Logged In As:</h5>
+          <h1>{{ getUserName() }}</h1>
+          <div class="logoutBtn mt-4">
+            <button (click)="logout()" class="btn btn-dark">Logout</button>
           </div>
-        </div>
-      </div>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </div>
