@@ -26,14 +26,28 @@ export class ReportsComponent implements OnInit {
   cars: Car[] = [];
   customers: Customer[] = [];
 
+  chartPallete:string[] = [
+    '#254469',
+    '#4C5F75',
+    '#5E7691',
+    '#1D3552',
+    '#3C70AB',
+    '#294D75',
+    '#4B5D73',
+    '#284869',
+    '#304680',
+    '#586482',
+    '#5F6D94'
+  ]
+
   carsChart: any = {
     cars: [],
     carCount: 0,
     label: {
       visible: true,
-      position: 'Inside',
+      position: 'Outside',
       template:
-        '<div class="text-center"><div>${point.x}</div><div>${point.y} Orders</div></div>',
+        '<div class="text-center text-dark"><div>${point.x}</div><div>${point.y} Orders</div></div>'
     },
     legend: {
       visible: true,
@@ -45,15 +59,7 @@ export class ReportsComponent implements OnInit {
       enable: true,
       format: '<span>${point.x} Ordered ${point.y} Times</span>',
     },
-    colorMap: 'color',
-    palletes: [
-      '#254469',
-      '#4C5F75',
-      '#5E7691',
-      '#1D3552',
-      '#3C70AB',
-      '#294D75',
-    ],
+    colorMap: 'color'
   };
 
   carsIncomeChart: any = {
@@ -61,10 +67,10 @@ export class ReportsComponent implements OnInit {
     carCount: 0,
     label: {
       visible: true,
-      position: 'Inside',
+      position: 'Outside',
       name: 'sum',
       template:
-        '<div class="text-center"><div>${point.x}</div><div>${point.y}$</div></div>',
+        '<div class="text-center text-dark"><div>${point.x}</div><div>${point.y}$</div></div>',
     },
     enableSmartLabels: true,
     legend: {
@@ -77,15 +83,7 @@ export class ReportsComponent implements OnInit {
       enable: true,
       format: '<span>${point.x} Has Made ${point.y}$ in Revenues</span>',
     },
-    colorMap: 'color',
-    palletes: [
-      '#254469',
-      '#4C5F75',
-      '#5E7691',
-      '#1D3552',
-      '#3C70AB',
-      '#294D75',
-    ],
+    colorMap: 'color'
   };
 
   customersChart: any = {
@@ -109,12 +107,11 @@ export class ReportsComponent implements OnInit {
       '#1D3552',
       '#3C70AB',
       '#294D75',
-      '#254469',
-      '#4C5F75',
-      '#5E7691',
-      '#1D3552',
-      '#3C70AB',
-      '#294D75',
+      '#4B5D73',
+      '#284869',
+      '#304680',
+      '#586482',
+      '#5F6D94'
     ],
     cornerRadius: {
       topLeft: 10,

@@ -13,10 +13,30 @@
         </div>
       </div>
 
+      <div class="graph mt-4">
+        <ejs-chart
+          id="chart-container"
+          [primaryXAxis]="customersChart.xAxis"
+          [primaryYAxis]="customersChart.yAxis"
+          [title]="'Customer Order Count'"
+          [tooltip]="customersChart.tooltip"
+          (pointRender)="pointRender($event)"
+        >
+          <e-series-collection>
+            <e-series
+              [dataSource]="customersChart.data"
+              type="Column"
+              xName="name"
+              yName="orderCount"
+              [cornerRadius]="customersChart.cornerRadius"
+            ></e-series>
+          </e-series-collection>
+        </ejs-chart>
+      </div>
       <div class="orders mt-4 row">
         <div class="cake col-12 col-md-6 d-flex justify-content-center">
           <ejs-accumulationchart
-            [title]="''"
+            [title]="'Car Orders'"
             [legendSettings]="carsChart.legend"
             [tooltip]="carsChart.tooltip"
           >
@@ -27,8 +47,8 @@
                 [dataLabel]="carsChart.label"
                 xName="name"
                 yName="amount"
-                innerRadius="35%"
-                [palettes]="carsChart.palletes"
+                innerRadius="70%"
+                [palettes]="chartPallete"
               >
               </e-accumulation-series>
             </e-accumulation-series-collection>
@@ -38,7 +58,7 @@
           <ejs-accumulationchart
             [enableSmartLabels]="carsIncomeChart.enableSmartLabels"
             (textRender)="onTextRender($event)"
-            [title]="''"
+            [title]="'Car Revenue'"
             [legendSettings]="carsIncomeChart.legend"
             [tooltip]="carsIncomeChart.tooltip"
           >
@@ -49,36 +69,13 @@
                 [dataLabel]="carsIncomeChart.label"
                 xName="name"
                 yName="sum"
-                innerRadius="35%"
-                [palettes]="carsIncomeChart.palletes"
+                innerRadius="70%"
+                [palettes]="chartPallete"
               >
               </e-accumulation-series>
             </e-accumulation-series-collection>
           </ejs-accumulationchart>
         </div>
-      </div>
-
-      <div class="graph mt-4">
-        <ejs-chart
-          id="chart-container"
-          [primaryXAxis]="customersChart.xAxis"
-          [primaryYAxis]="customersChart.yAxis"
-          [title]="''"
-          [tooltip]="customersChart.tooltip"
-          [palettes]="customersChart.palletes"
-          (pointRender)="pointRender($event)"
-        >
-          <e-series-collection>
-            <e-series
-              [dataSource]="customersChart.data"
-              type="Column"
-              xName="name"
-              yName="orderCount"
-              [pointColorMapping]="customersChart.colorMap"
-              [cornerRadius]="customersChart.cornerRadius"
-            ></e-series>
-          </e-series-collection>
-        </ejs-chart>
       </div>
     </div>
   </div>
