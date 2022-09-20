@@ -64,15 +64,15 @@ export class CustomerDetailsComponent implements OnInit {
       this.cars = data;
     });
 
-    this.cs.getCustomer().subscribe((customerData: Customer[]) => {
-      this.costumers = customerData;
-      let testArr = [];
-      customerData.forEach((customer) => {
-        if (customer.id != this.customerId) testArr.push(customer);
-        if (testArr.length == customerData.length) {
-          this.router.navigateByUrl('/pnf');
-        }
-      });
+    this.cs.getCustomer().subscribe((customersData: Customer[]) => {
+      this.costumers = customersData;
+      // let testArr = [];
+      // customerData.forEach((customer) => {
+      //   if (customer.id != this.customerId) testArr.push(customer);
+      //   if (testArr.length == customerData.length) {
+      //     this.router.navigateByUrl('/pnf');
+      //   }
+      // });
     });
 
     this.customerId = this.actRoute.snapshot.params['id'];

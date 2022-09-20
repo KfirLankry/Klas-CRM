@@ -11,6 +11,40 @@
           <small>Company's Archive.</small>
         </div>
       </div>
+      
+      <div>
+        <table class="table table-hover">
+          <!-- <thead>
+            <td>Customer</td>
+            <td>Dates</td>
+            <td>Period</td>
+            <td>Sum</td>
+          </thead> -->
+          <ng-container *ngFor="let car of cars">
+            <thead>
+              <th colspan="3">
+                <div>
+                  <img src={{car.picUrl}} width="90px">
+                  <h4 class="display-6 fs-5 d-inline ms-4">{{car.manufacture + ' ' + car.model}}</h4>
+                </div>
+              </th>
+              <th colspan="1">{{getCarSum(car.id) | currency}}</th>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="carsWithOrders.includes(car.model)">
+                <ng-container *ngFor="let order of orders">
+                  <tr *ngIf="order.car_id == car.id">
+                    <td>{{getCustomerName(order.customer_id)}}</td>
+                    <td>{{getDate(order.start, '') + ' - ' + getDate(order.end, '')}}</td>
+                    <td>{{dateDiffInDays(order.start, order.end)}} Days</td>
+                    <td>{{order.sum | currency}}</td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </tbody>
+          </ng-container>
+        </table>
+      </div>
     </div>
   </div>
 </div>

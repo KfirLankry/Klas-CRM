@@ -5,6 +5,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddCustomerComponent } from '../add-customer/add-customer.component';
 import { EditCustomerComponent } from '../edit-customer/edit-customer.component';
 import { ToastrService } from 'ngx-toastr';
+import { ordersService } from 'src/app/services/orders.service';
+import { Order } from 'src/app/interfaces/Order';
 
 @Component({
   selector: 'app-show-list',
@@ -14,16 +16,21 @@ import { ToastrService } from 'ngx-toastr';
 export class ShowListComponent implements OnInit {
   customer: Customer = { firstName: '', lastName: '', phone: '', email: '' };
   costumers: Customer[] = [];
+  orders:Order[] = []
   constructor(
     private cs: AddCustomerService,
     private modal: NgbModal,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private os: ordersService
   ) {}
 
   ngOnInit(): void {
     this.cs.getCustomer().subscribe((customerData: Customer[]) => {
       this.costumers = customerData;
     });
+    this.os.getAll().subscribe((data)=>{
+        this.orders = data
+    })
   }
 
   //Pipe Filter
@@ -53,7 +60,10 @@ export class ShowListComponent implements OnInit {
 
   // Delete Customer
   deleteCustomer(customer: Customer) {
-    if (confirm('You are about to delete this customer, Are you sure?')) {
+    if (confirm('You are about to delete this customer, Are you sure?')&& confirm("All Of this customer's orders will be also deleted...")) {
+      this.orders.forEach((order)=>{
+        if(order.customer_id == customer.id) this.os.deleteOrder(order)
+      })
       this.cs.deleteCustomer(customer);
       this.toastr.success('Customer Deleted Successfuly!', '', {
         progressBar: true,
