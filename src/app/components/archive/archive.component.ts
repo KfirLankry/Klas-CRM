@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Car } from 'src/app/interfaces/Car';
 import { Customer } from 'src/app/interfaces/Customer';
 import { Order } from 'src/app/interfaces/Order';
 import { AddCustomerService } from 'src/app/services/add-customer.service';
 import { CarsService } from 'src/app/services/cars.service';
 import { ordersService } from 'src/app/services/orders.service';
+import { CarDetailsComponent } from '../car-details/car-details.component';
 
 @Component({
   selector: 'app-archive',
@@ -19,7 +21,7 @@ export class ArchiveComponent implements OnInit {
   carsIncome:any = []
   customers:Customer[] = []
 
-  constructor(private os: ordersService, private cs: CarsService, private cusS:AddCustomerService) { }
+  constructor(private os: ordersService, private cs: CarsService, private cusS:AddCustomerService, private modal:NgbModal) { }
 
   ngOnInit(): void {
     this.carsWithOrders = []
@@ -97,6 +99,15 @@ export class ArchiveComponent implements OnInit {
     if(customer.id == cusId) res = `${customer.firstName + ' ' + customer.lastName}`
    })
    return res
+  }
+
+  carDetails(id: string) {
+    const modalRef = this.modal.open(CarDetailsComponent, {
+      size: 'lg',
+      centered: true,
+      windowClass: 'dark-modal',
+    });
+    modalRef.componentInstance.id = id;
   }
 
 }

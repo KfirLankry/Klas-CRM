@@ -34,7 +34,7 @@ export class ReportsComponent implements OnInit {
     '#3C70AB',
     '#294D75',
     '#4B5D73',
-    '#284869',
+    '#6C799E',
     '#304680',
     '#586482',
     '#5F6D94'
@@ -108,7 +108,7 @@ export class ReportsComponent implements OnInit {
       '#3C70AB',
       '#294D75',
       '#4B5D73',
-      '#284869',
+      '#6C799E',
       '#304680',
       '#586482',
       '#5F6D94'

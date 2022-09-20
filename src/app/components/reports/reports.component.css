@@ -42,4 +42,8 @@
   .graph {
     width: 98%;
   }
+
+  .pie-graph{
+    width: 80vw;
+  }
 }

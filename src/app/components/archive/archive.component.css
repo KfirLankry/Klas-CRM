@@ -2,6 +2,11 @@
   width: 99%;
 }
 
+table{
+  margin-top: 15px;
+  background-color: #EAEAEA;
+}
+
 @media only screen and (max-width: 991px) {
   .header {
     margin: 0 0 0 0.2rem;
