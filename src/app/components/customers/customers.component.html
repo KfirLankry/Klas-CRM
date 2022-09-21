@@ -13,7 +13,307 @@
           <small>Company's Customers Information.</small>
         </div>
       </div>
-      <app-show-list></app-show-list>
+      <!-- Add Customer -->
+      <div class="addCustomer mt-2">
+        <button
+          type="submit"
+          class="btn mobileBtn btn-dark mt-3 addShadow"
+          (click)="addNewCustomer(customer)"
+        >
+          <i class="fa-solid fa-plus"></i> Add New Customer
+        </button>
+      </div>
+      <!-- Search Customer -->
+      <div class="mt-4">
+        <div class="search" role="tablist">
+          <div class="input-group inputs" novalidate>
+            <span class="input-group-text"
+              ><i class="fa-solid fa-magnifying-glass"></i
+            ></span>
+            <input
+              type="search"
+              class="form-control"
+              placeholder="First Name..."
+              [(ngModel)]="customerFirstName"
+            />
+          </div>
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-magnifying-glass"></i
+            ></span>
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Last Name..."
+              [(ngModel)]="customerLastName"
+            />
+          </div>
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-magnifying-glass"></i
+            ></span>
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Phone..."
+              [(ngModel)]="customerPhone"
+            />
+          </div>
+          <!-- TABS -->
+
+          <div class="tab">
+            <button
+              class="btn btn-outline-dark active"
+              id=""
+              data-bs-toggle="pill"
+              data-bs-target="#pills-home"
+              type="button"
+              role="tab"
+              aria-controls="pills-home"
+              aria-selected="true"
+            >
+              <i class="fa-solid fa-table-cells"></i>
+            </button>
+          </div>
+
+          <div class="tab">
+            <button
+              class="btn btn-outline-dark"
+              id="pills-profile-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#pills-profile"
+              type="button"
+              role="tab"
+              aria-controls="pills-profile"
+              aria-selected="false"
+            >
+              <i class="fa-solid fa-list"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          *ngIf="
+            costumers
+              | filterr: 'firstName':customerFirstName
+              | filterr: 'lastName':customerLastName
+              | filterr: 'phone':customerPhone as costumers
+          "
+        >
+          <div class="tab-content mt-4" id="pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="pills-home"
+              role="tabpanel"
+              aria-labelledby="pills-home-tab"
+              tabindex="0"
+            >
+              <!-- Table -->
+              <div class="tableDiv mt-2">
+                <ng-container *ngIf="costumers.length > 0; else noCustomer">
+                  <table
+                    class="table table-hover table-bordered table-responsive"
+                  >
+                    <thead>
+                      <tr class="borderdLine text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let customer of costumers; index as i">
+                        <td class="text-center center" scope="row">
+                          {{ i + 1 }}
+                        </td>
+                        <td class="text-center center">
+                          {{ customer.firstName }}
+                        </td>
+                        <td class="text-center center">
+                          {{ customer.lastName }}
+                        </td>
+                        <ng-container *ngIf="customer.phone; else noPhone">
+                          <td class="text-center">{{ customer.phone }}</td>
+                        </ng-container>
+                        <ng-template #noPhone>
+                          <td
+                            class="text-center"
+                            style="color: rgb(139, 139, 139)"
+                          >
+                            No phone added.
+                          </td>
+                        </ng-template>
+                        <ng-container *ngIf="customer.email; else noEmail">
+                          <td class="text-center">{{ customer.email }}</td>
+                        </ng-container>
+                        <ng-template #noEmail>
+                          <td
+                            class="text-center"
+                            style="color: rgb(139, 139, 139)"
+                          >
+                            No email added.
+                          </td>
+                        </ng-template>
+                        <td class="text-center" class="options">
+                          <!-- Edit / View / Delete BTNS -->
+                          <div class="btns">
+                            <button
+                              type="submit"
+                              (click)="editCustomer(customer)"
+                              class="btn btn-secondary addShadow"
+                            >
+                              <i class="fa-regular fa-pen-to-square"></i>
+                            </button>
+                            <button
+                              [routerLink]="[
+                                '/dashboard/customers',
+                                customer.id
+                              ]"
+                              class="btn btn-secondary addShadow"
+                            >
+                              <i class="fa-regular fa-eye"></i>
+                            </button>
+                            <button
+                              (click)="deleteCustomer(customer)"
+                              class="btn btn-danger addShadow"
+                            >
+                              <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                          </div>
+                          <!-- End of BTNS -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </ng-container>
+                <!-- Table Error Msg -->
+                <ng-template #noCustomer>
+                  <h3 class="text-center mt-5">No customers found...</h3>
+                  <div class="loadingImage">
+                    <img
+                      class="loading img-fluid"
+                      src="../../../assets/img/Loading.svg"
+                      alt=""
+                    />
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="pills-profile"
+              role="tabpanel"
+              aria-labelledby="pills-profile-tab"
+              tabindex="0"
+            >
+              <!-- CardS -->
+              <div *ngIf="costumers.length > 0; else error">
+                <div class="cardsDiv container-fluid">
+                  <div class="row">
+                    <ng-container
+                      *ngFor="let customer of costumers; index as i"
+                    >
+                      <div class="card mx-1 mb-2">
+                        <div class="row">
+                          <div class="profileImage">
+                            <img
+                              src="../../../assets/img/149071.png"
+                              class="img-fluid mx-2 mb-4"
+                              alt="..."
+                            />
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <h5 class="card-title title">
+                                {{ customer.firstName }} {{ customer.lastName }}
+                              </h5>
+
+                              <ng-container
+                                *ngIf="customer.phone; else noPhone"
+                              >
+                                <div class="card-text">
+                                  Phone: {{ customer.phone }}
+                                </div>
+                              </ng-container>
+                              <ng-template #noPhone>
+                                <li style="list-style: none">
+                                  Phone: No phone added.
+                                </li>
+                              </ng-template>
+                              <ng-container
+                                *ngIf="customer.email; else noEmail"
+                              >
+                                <div class="card-text">
+                                  Email: {{ customer.email }}
+                                </div>
+                              </ng-container>
+                              <ng-template #noEmail>
+                                <li style="list-style: none">
+                                  Email: No email added.
+                                </li>
+                              </ng-template>
+                              <div class="card-text">
+                                <small class="text-muted"
+                                  >Created on:
+                                  {{ getDate(customer.dateAdded) }}</small
+                                >
+                              </div>
+                              <!-- Edit / View / Delete BTNS -->
+                              <div class="w-100 mt-2">
+                                <div class="btns">
+                                  <button
+                                    type="submit"
+                                    (click)="editCustomer(customer)"
+                                    class="btn btn-secondary addShadow w-100"
+                                  >
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                    Edit
+                                  </button>
+                                  <button
+                                    [routerLink]="[
+                                      '/dashboard/customers',
+                                      customer.id
+                                    ]"
+                                    class="btn btn-secondary addShadow w-100"
+                                  >
+                                    <i class="fa-regular fa-eye"></i> View
+                                  </button>
+                                  <button
+                                    (click)="deleteCustomer(customer)"
+                                    class="btn btn-danger addShadow w-100"
+                                  >
+                                    <i class="fa-solid fa-trash-can"></i> Delete
+                                  </button>
+                                </div>
+                                <!-- End of BTNS -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+                <!-- End Of Cards -->
+              </div>
+              <!-- Card Error Msg -->
+              <ng-template #error>
+                <h3 class="text-center mt-5">No customers found...</h3>
+                <div class="loadingImage">
+                  <img
+                    class="loading img-fluid"
+                    src="../../../assets/img/Loading.svg"
+                    alt=""
+                  />
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Cards -->
     <div class="col-lg-2 mt-4 stats">

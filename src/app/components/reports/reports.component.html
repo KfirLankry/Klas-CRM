@@ -12,71 +12,72 @@
           <small>Company's Reports Information.</small>
         </div>
       </div>
-
-      <div class="graph mt-4 row">
-        <ejs-chart
-          id="chart-container"
-          [primaryXAxis]="customersChart.xAxis"
-          [primaryYAxis]="customersChart.yAxis"
-          [title]="'Customer Order Count'"
-          [tooltip]="customersChart.tooltip"
-          (pointRender)="pointRender($event)"
-        >
-          <e-series-collection>
-            <e-series
-              [dataSource]="customersChart.data"
-              type="Column"
-              xName="name"
-              yName="orderCount"
-              [cornerRadius]="customersChart.cornerRadius"
-            ></e-series>
-          </e-series-collection>
-        </ejs-chart>
-      </div>
-      <div class="orders mt-4 row mb-3">
-        <div class="cake col-12 col-md-6 d-flex justify-content-center">
-          <ejs-accumulationchart
-            [title]="'Car Orders'"
-            [legendSettings]="carsChart.legend"
-            [tooltip]="carsChart.tooltip"
-            class="pie-graph"
+      <div class="allGraphs">
+        <div class="graph mt-4 row">
+          <ejs-chart
+            id="chart-container"
+            [primaryXAxis]="customersChart.xAxis"
+            [primaryYAxis]="customersChart.yAxis"
+            [title]="'Customer Order Count'"
+            [tooltip]="customersChart.tooltip"
+            (pointRender)="pointRender($event)"
           >
-            <e-accumulation-series-collection>
-              <e-accumulation-series
-                type="Pie"
-                [dataSource]="carsChart.cars"
-                [dataLabel]="carsChart.label"
+            <e-series-collection>
+              <e-series
+                [dataSource]="customersChart.data"
+                type="Column"
                 xName="name"
-                yName="amount"
-                innerRadius="70%"
-                [palettes]="chartPallete"
-              >
-              </e-accumulation-series>
-            </e-accumulation-series-collection>
-          </ejs-accumulationchart>
+                yName="orderCount"
+                [cornerRadius]="customersChart.cornerRadius"
+              ></e-series>
+            </e-series-collection>
+          </ejs-chart>
         </div>
-        <div class="cake col-12 col-md-6 d-flex justify-content-center">
-          <ejs-accumulationchart
-            [enableSmartLabels]="carsIncomeChart.enableSmartLabels"
-            (textRender)="onTextRender($event)"
-            [title]="'Car Revenue'"
-            [legendSettings]="carsIncomeChart.legend"
-            [tooltip]="carsIncomeChart.tooltip"
-            class="pie-graph"
-          >
-            <e-accumulation-series-collection>
-              <e-accumulation-series
-                type="Pie"
-                [dataSource]="carsIncomeChart.cars"
-                [dataLabel]="carsIncomeChart.label"
-                xName="name"
-                yName="sum"
-                innerRadius="70%"
-                [palettes]="chartPallete"
-              >
-              </e-accumulation-series>
-            </e-accumulation-series-collection>
-          </ejs-accumulationchart>
+        <div class="orders mt-4 row mb-3">
+          <div class="cake col-12 col-md-6 d-flex justify-content-center">
+            <ejs-accumulationchart
+              [title]="'Car Orders'"
+              [legendSettings]="carsChart.legend"
+              [tooltip]="carsChart.tooltip"
+              class="pie-graph"
+            >
+              <e-accumulation-series-collection>
+                <e-accumulation-series
+                  type="Pie"
+                  [dataSource]="carsChart.cars"
+                  [dataLabel]="carsChart.label"
+                  xName="name"
+                  yName="amount"
+                  innerRadius="70%"
+                  [palettes]="chartPallete"
+                >
+                </e-accumulation-series>
+              </e-accumulation-series-collection>
+            </ejs-accumulationchart>
+          </div>
+          <div class="cake col-12 col-md-6 d-flex justify-content-center">
+            <ejs-accumulationchart
+              [enableSmartLabels]="carsIncomeChart.enableSmartLabels"
+              (textRender)="onTextRender($event)"
+              [title]="'Car Revenue'"
+              [legendSettings]="carsIncomeChart.legend"
+              [tooltip]="carsIncomeChart.tooltip"
+              class="pie-graph"
+            >
+              <e-accumulation-series-collection>
+                <e-accumulation-series
+                  type="Pie"
+                  [dataSource]="carsIncomeChart.cars"
+                  [dataLabel]="carsIncomeChart.label"
+                  xName="name"
+                  yName="sum"
+                  innerRadius="70%"
+                  [palettes]="chartPallete"
+                >
+                </e-accumulation-series>
+              </e-accumulation-series-collection>
+            </ejs-accumulationchart>
+          </div>
         </div>
       </div>
     </div>

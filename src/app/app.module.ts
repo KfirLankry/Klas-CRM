@@ -12,7 +12,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ShowListComponent } from './components/show-list/show-list.component';
 import { AddCustomerComponent } from './components/add-customer/add-customer.component';
 import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
@@ -58,7 +57,6 @@ import { AboutComponent } from './components/about/about.component';
     NavbarComponent,
     CustomersComponent,
     ContactsComponent,
-    ShowListComponent,
     AddCustomerComponent,
     EditCustomerComponent,
     CustomerDetailsComponent,

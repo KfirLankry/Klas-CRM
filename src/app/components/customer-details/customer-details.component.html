@@ -94,8 +94,7 @@
             <thead>
               <tr class="borderdLine text-center">
                 <th scope="col">#</th>
-                <th scope="col">Ordered Since</th>
-                <th scope="col">Ordered Untill</th>
+                <th scope="col">Order Dates</th>
                 <th scope="col">Car Image</th>
                 <th scope="col">Car Model</th>
                 <th scope="col">Total Price</th>
@@ -107,9 +106,7 @@
                 <tr class="text-center active-order">
                   <th scope="row">{{ i + 1 }}</th>
                   <td>
-                    {{ getDate(order.start, "") }}
-                  </td>
-                  <td>
+                    {{ getDate(order.start, "") }} -
                     {{ getDate(order.end, "") }}
                   </td>
                   <td>
@@ -137,11 +134,10 @@
                 <tr class="text-center future-order">
                   <th scope="row">{{ i + 1 }}</th>
                   <td>
-                    {{ getDate(order.start, "") }}
-                  </td>
-                  <td>
+                    {{ getDate(order.start, "") }} -
                     {{ getDate(order.end, "") }}
                   </td>
+
                   <td>
                     <a (click)="carDetails(order.car_id)">
                       <img
@@ -167,11 +163,10 @@
                 <tr class="text-center past-order">
                   <th scope="row">{{ i + 1 }}</th>
                   <td>
-                    {{ getDate(order.start, "") }}
-                  </td>
-                  <td>
+                    {{ getDate(order.start, "") }} -
                     {{ getDate(order.end, "") }}
                   </td>
+
                   <td>
                     <a (click)="carDetails(order.car_id)">
                       <img

@@ -40,6 +40,11 @@ a {
   cursor: pointer;
 }
 
+.tableDiv {
+  height: 62vh;
+  overflow-y: auto;
+}
+
 .tabs,
 .nav,
 .newOrderBtn {

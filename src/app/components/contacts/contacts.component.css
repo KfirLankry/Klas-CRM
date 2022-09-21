@@ -25,6 +25,11 @@ table,
   animation: fadeInRight 0.5s ease-in-out;
 }
 
+.tableDiv {
+  height: 68vh;
+  overflow-y: auto;
+}
+
 @keyframes fadeInRight {
   from {
     opacity: 0;
@@ -62,4 +67,53 @@ table,
   .search {
     width: 94vw;
   }
+}
+
+/* Cards */
+
+#container {
+  width: 23rem;
+  margin: 1.5rem auto 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+#container:hover {
+  transform: scale(1.05);
+  transition: transform 0.7s;
+}
+
+#container #hero-img {
+  width: 100%;
+  height: 7rem;
+  background: url("https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png")
+    no-repeat center center;
+  background-size: cover;
+}
+#container #profile-img {
+  width: 12rem;
+  height: 12rem;
+  margin: -80px auto 0 auto;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(90, 90, 90, 0.3);
+}
+#container #profile-img img {
+  width: 100%;
+  background: #fff;
+  border-radius: 50%;
+}
+#container #content {
+  text-align: center;
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 0 50px 0;
+}
+#container #content h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 20px 0 0 0;
 }

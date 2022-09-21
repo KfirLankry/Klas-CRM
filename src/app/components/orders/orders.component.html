@@ -67,6 +67,12 @@
               </button>
             </li>
           </div>
+          <!-- New Order BTN -->
+          <div class="newOrderBtn mt-1">
+            <button class="btn btn-dark" (click)="addNewOrder()">
+              <i class="fa-solid fa-plus"></i> Add New Order
+            </button>
+          </div>
         </ul>
       </div>
 
@@ -92,7 +98,7 @@
                       <th scope="col">Customer Name</th>
                       <th scope="col">Car Image</th>
                       <th scope="col">Car Model</th>
-                      <th scope="col">Ordere Details</th>
+                      <th scope="col">Order Details</th>
                       <th scope="col">Total Price</th>
                       <th scope="col">Actions</th>
                     </tr>
@@ -119,7 +125,7 @@
                             </a>
                           </div>
                         </td>
-                        <!-- https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_low/v1/editorial/vhs/Mitsubishi-Lancer.png -->
+
                         <td>
                           <div>
                             {{ getCarById(order.car_id).manufacture }}
@@ -139,14 +145,8 @@
                           <!-- Edit / View / Delete BTNS -->
                           <div class="btns">
                             <button
-                              type="submit"
-                              class="btn btn-secondary mx-1"
-                            >
-                              <i class="fa-regular fa-pen-to-square"></i>
-                            </button>
-                            <button
                               (click)="deleteOrder(order)"
-                              class="btn btn-danger"
+                              class="btn btn-danger w-75"
                             >
                               <i class="fa-solid fa-trash-can"></i>
                             </button>
@@ -158,13 +158,6 @@
                 </table>
               </div>
             </ng-container>
-
-            <!-- New Order BTN -->
-            <div class="newOrderBtn mt-4">
-              <button class="btn btn-dark mb-4" (click)="addNewOrder()">
-                <i class="fa-solid fa-plus"></i> Add New Order
-              </button>
-            </div>
           </div>
           <!-- Past Orders Content -->
           <div
@@ -182,10 +175,11 @@
                 >
                   <thead>
                     <tr class="borderdLine text-center">
+                      <th scope="col">#</th>
                       <th scope="col">Customer Name</th>
                       <th scope="col">Car Image</th>
                       <th scope="col">Car Model</th>
-                      <th scope="col">Ordere Details</th>
+                      <th scope="col">Order Details</th>
                       <th scope="col">Total Price</th>
                       <th scope="col">Actions</th>
                     </tr>
@@ -224,6 +218,17 @@
                         <td>
                           {{ order.sum | currency }}
                         </td>
+                        <td>
+                          <!-- Edit / View / Delete BTNS -->
+                          <div class="btns">
+                            <button
+                              (click)="deleteOrder(order)"
+                              class="btn btn-danger w-75"
+                            >
+                              <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                          </div>
+                        </td>
                       </tr>
                     </ng-container>
                   </tbody>
@@ -248,10 +253,11 @@
                 >
                   <thead>
                     <tr class="borderdLine text-center">
+                      <th scope="col">#</th>
                       <th scope="col">Customer Name</th>
                       <th scope="col">Car Image</th>
                       <th scope="col">Car Model</th>
-                      <th scope="col">Ordere Details</th>
+                      <th scope="col">Order Details</th>
                       <th scope="col">Total Price</th>
                       <th scope="col">Actions</th>
                     </tr>
@@ -267,6 +273,8 @@
                           (click)="navToCustomerDetails(order.customer_id)"
                         >
                           {{ getCustomerById(order.customer_id) }}
+                        </td>
+                        <td>
                           <div>
                             <a (click)="carDetails(order.car_id)">
                               <img
@@ -290,18 +298,17 @@
                         <td>
                           {{ order.sum | currency }}
                         </td>
-                        <!-- Edit / View / Delete BTNS -->
-                        <div class="btns">
-                          <button type="submit" class="btn btn-secondary mx-1">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                          </button>
-                          <button
-                            (click)="deleteOrder(order)"
-                            class="btn btn-danger"
-                          >
-                            <i class="fa-solid fa-trash-can"></i>
-                          </button>
-                        </div>
+                        <td>
+                          <!-- Edit / View / Delete BTNS -->
+                          <div class="btns">
+                            <button
+                              (click)="deleteOrder(order)"
+                              class="btn btn-danger w-75"
+                            >
+                              <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                          </div>
+                        </td>
                       </tr>
                     </ng-container>
                   </tbody>
