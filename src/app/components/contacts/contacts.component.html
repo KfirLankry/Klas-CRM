@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
 <div class="content">
-  <div class="row row-cols-2">
+  <div class="row">
     <div class="col-lg-2 col-sm-0 sideB">
       <app-sidebar></app-sidebar>
     </div>
 
-    <div class="col-lg-10 col-sm-12 mt-4">
+    <div class="cards col-lg-10 col-sm-12 mt-4">
       <!-- Header Title -->
       <div class="header">
         <div class="mx-4 mt-1">
@@ -67,33 +67,6 @@
                 </ng-container>
               </ng-container>
             </div>
-            <!-- <table class="table table-hover table-bordered">
-                  <thead>
-                    <tr class="borderdLine text-center">
-                      <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Role</th>
-                      <th scope="col">Birthday</th>
-                      <th scope="col">Phones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <ng-container *ngFor="let cnt of contactArr; index as i">
-                      <tr>
-                        <th class="text-center" scope="row">{{ i + 1 }}</th>
-                        <td class="text-center">{{ cnt.name }}</td>
-                        <td class="text-center">{{ cnt.email }}</td>
-                        <td class="text-center">{{ cnt.role }}</td>
-                        <td class="text-center">
-                          {{ getBirthday(cnt.birthday) }}
-                        </td>
-                        <td class="text-center">{{ cnt.phones }}</td>
-                      </tr>
-                    </ng-container>
-                  </tbody>
-                </table> -->
-
             <ng-template #noContact>
               <h3 class="text-center mt-5">There is no such Employee...</h3>
               <div class="loadingImage">

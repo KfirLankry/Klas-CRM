@@ -67,13 +67,22 @@ table,
   .search {
     width: 94vw;
   }
+
+  .cards {
+    width: 30rem;
+  }
+
+  #container #hero-img {
+    max-width: 30rem !important;
+    height: 7rem !important;
+  }
 }
 
 /* Cards */
 
 #container {
   width: 23rem;
-  margin: 1.5rem auto 0 auto;
+  margin: 1.5rem 0 0 0;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
