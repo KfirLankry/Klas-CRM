@@ -30,10 +30,10 @@
   background-color: #eeeeee;
 }
 .active-order {
-  background-color: #adddd0;
+  background-color: rgba(168, 235, 217, 0.322);
 }
 .future-order {
-  background-color: #9cb3ffc1;
+  background-color: #b1c2fa83;
 }
 
 a {
