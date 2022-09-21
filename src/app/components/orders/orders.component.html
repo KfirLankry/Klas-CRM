@@ -32,23 +32,7 @@
               </button>
             </li>
           </div>
-          <div class="tab">
-            <!-- Past Orders Tab -->
-            <li class="nav-item" role="presentation">
-              <button
-                class="btn btn-outline-dark"
-                id="pills-profile-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-profile"
-                type="button"
-                role="tab"
-                aria-controls="pills-profile"
-                aria-selected="false"
-              >
-                Past Orders
-              </button>
-            </li>
-          </div>
+
           <div class="tab">
             <!-- Future Orders Tab -->
             <li class="nav-item" role="presentation">
@@ -63,6 +47,23 @@
                 aria-selected="false"
               >
                 Future Orders
+              </button>
+            </li>
+          </div>
+          <div class="tab">
+            <!-- Past Orders Tab -->
+            <li class="nav-item" role="presentation">
+              <button
+                class="btn btn-outline-dark"
+                id="pills-profile-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile"
+                aria-selected="false"
+              >
+                Past Orders
               </button>
             </li>
           </div>
@@ -91,9 +92,7 @@
                       <th scope="col">Customer Name</th>
                       <th scope="col">Car Image</th>
                       <th scope="col">Car Model</th>
-                      <th scope="col">Ordered Since</th>
-                      <th scope="col">Ordered Untill</th>
-                      <th scope="col">Period</th>
+                      <th scope="col">Ordere Details</th>
                       <th scope="col">Total Price</th>
                       <th scope="col">Actions</th>
                     </tr>
@@ -128,13 +127,10 @@
                           </div>
                         </td>
                         <td>
-                          {{ getDate(order.start, "") }}
-                        </td>
-                        <td>
-                          {{ getDate(order.end, "") }}
-                        </td>
-                        <td>
-                          {{ dateDiffInDays(order.start, order.end) }} Days
+                          {{ getDate(order.start, "") }} -
+                          {{ getDate(order.end, "") }} -
+                          {{ dateDiffInDays(order.start, order.end) }}
+                          Days
                         </td>
                         <td>
                           {{ order.sum | currency }}
@@ -186,14 +182,12 @@
                 >
                   <thead>
                     <tr class="borderdLine text-center">
-                      <th scope="col">#</th>
                       <th scope="col">Customer Name</th>
                       <th scope="col">Car Image</th>
                       <th scope="col">Car Model</th>
-                      <th scope="col">Ordered Since</th>
-                      <th scope="col">Ordered Untill</th>
-                      <th scope="col">Period</th>
+                      <th scope="col">Ordere Details</th>
                       <th scope="col">Total Price</th>
+                      <th scope="col">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -223,12 +217,8 @@
                           </div>
                         </td>
                         <td>
-                          {{ getDate(order.start, "") }}
-                        </td>
-                        <td>
-                          {{ getDate(order.end, "") }}
-                        </td>
-                        <td>
+                          {{ getDate(order.start, "") }} -
+                          {{ getDate(order.end, "") }} -
                           {{ dateDiffInDays(order.start, order.end) }} Days
                         </td>
                         <td>
@@ -258,13 +248,10 @@
                 >
                   <thead>
                     <tr class="borderdLine text-center">
-                      <th scope="col">#</th>
                       <th scope="col">Customer Name</th>
                       <th scope="col">Car Image</th>
                       <th scope="col">Car Model</th>
-                      <th scope="col">Ordered Since</th>
-                      <th scope="col">Ordered Untill</th>
-                      <th scope="col">Period</th>
+                      <th scope="col">Ordere Details</th>
                       <th scope="col">Total Price</th>
                       <th scope="col">Actions</th>
                     </tr>
@@ -280,9 +267,6 @@
                           (click)="navToCustomerDetails(order.customer_id)"
                         >
                           {{ getCustomerById(order.customer_id) }}
-                        </td>
-
-                        <td>
                           <div>
                             <a (click)="carDetails(order.car_id)">
                               <img
@@ -299,12 +283,8 @@
                           </div>
                         </td>
                         <td>
-                          {{ getDate(order.start, "") }}
-                        </td>
-                        <td>
-                          {{ getDate(order.end, "") }}
-                        </td>
-                        <td>
+                          {{ getDate(order.start, "") }} -
+                          {{ getDate(order.end, "") }} -
                           {{ dateDiffInDays(order.start, order.end) }} Days
                         </td>
                         <td>
