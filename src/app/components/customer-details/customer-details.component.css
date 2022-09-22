@@ -3,7 +3,7 @@
 }
 
 .noOrderImage {
-  animation: fadeInRight 0.5s ease-in-out;
+  animation: fadeInRight 0.2s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,10 +34,6 @@
   font-weight: 600;
 }
 
-.card-body {
-  width: 100%;
-}
-
 .gradinetLine,
 .header,
 .card {
@@ -48,19 +44,19 @@
       #0ca2ff 47%,
       #575e86 100%
     )
-    left bottom #eaeaea no-repeat;
+    left bottom #ffffff no-repeat;
   background-size: 100% 5px; /* if linear-gradient, we need to resize it */
 }
 
 .card {
-  box-shadow: 1px 1px 3px 0.5px rgba(0, 0, 0, 0.258);
+  box-shadow: 1px 1px 5px 0.5px rgba(0, 0, 0, 0.174);
   height: 10rem;
-  animation: fadeInRight 0.5s ease-in-out;
+  animation: fadeInRight 0.2s ease-in-out;
 }
 
 table,
 .badge {
-  animation: fadeInRight 0.5s ease-in-out;
+  animation: fadeInRight 0.2s ease-in-out;
   box-shadow: 1px 0px 1px 1px rgba(0, 0, 0, 0.12);
 }
 

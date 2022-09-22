@@ -4,8 +4,7 @@
 
 .orders,
 .graph {
-  animation: fadeInRight 0.5s ease-in-out;
-  width: 100%;
+  animation: fadeInRight 0.2s ease-in-out;
   box-shadow: 1px 1px 7px 2px rgba(0, 0, 0, 0.12);
   background: linear-gradient(
       to left,
@@ -14,30 +13,29 @@
       #0ca2ff 47%,
       #575e86 100%
     )
-    left bottom rgb(234, 234, 234) no-repeat;
+    left bottom rgb(255, 255, 255) no-repeat;
   background-size: 100% 5px; /* if linear-gradient, we need to resize it */
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.212));
 }
 
-.allGraphs {
-  height: 75vh;
-  overflow: auto;
-  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.12);
+.graph,
+.orders {
+  width: 100%;
 }
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.allContent {
+  margin: 0 0 0 0.8rem;
 }
 
 @media only screen and (max-width: 991px) {
   .header {
     margin: 0 0 0 0.3rem;
-    width: 95vw;
+    width: 93vw;
     height: 5rem;
+  }
+
+  .allContent {
+    margin: 0 0 0 0px;
   }
 
   .sideB {
@@ -51,5 +49,11 @@
 
   .pie-graph {
     width: 80vw;
+  }
+
+  .allGraphs {
+    height: 100vh;
+    overflow: auto;
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.12);
   }
 }

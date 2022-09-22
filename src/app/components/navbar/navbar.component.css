@@ -1,11 +1,10 @@
 .navbar {
   background-color: #181e25 !important;
   color: white;
-}
-
-.logo {
-  width: 1.8rem;
-  margin: 0 0.2rem 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.531));
 }
 
 .dropdown {
@@ -19,11 +18,6 @@
 .links {
   display: flex;
   flex-direction: column;
-}
-
-.notAllowed {
-  cursor: not-allowed;
-  text-decoration: none;
 }
 
 .notification {
@@ -75,6 +69,15 @@ a:hover {
 }
 
 @media only screen and (max-width: 767px) {
+  .mobileHidden {
+    display: none;
+  }
+  .hidden {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 989px) {
   .mobileHidden {
     display: none;
   }

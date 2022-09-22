@@ -93,7 +93,7 @@
                   class="table table-hover table-bordered table-responsive mt-2"
                 >
                   <thead>
-                    <tr class="borderdLine text-center">
+                    <tr class="borderdLine white-bg text-center">
                       <th scope="col">#</th>
                       <th scope="col">Customer Name</th>
                       <th scope="col">Car Image</th>
@@ -134,9 +134,10 @@
                         </td>
                         <td>
                           {{ getDate(order.start, "") }} -
-                          {{ getDate(order.end, "") }} -
-                          {{ dateDiffInDays(order.start, order.end) }}
-                          Days
+                          {{ getDate(order.end, "") }} ({{
+                            dateDiffInDays(order.start, order.end)
+                          }}
+                          Days)
                         </td>
                         <td>
                           {{ order.sum | currency }}
@@ -174,7 +175,7 @@
                   class="table table-hover table-bordered table-responsive mt-2"
                 >
                   <thead>
-                    <tr class="borderdLine text-center">
+                    <tr class="borderdLine white-bg text-center">
                       <th scope="col">#</th>
                       <th scope="col">Customer Name</th>
                       <th scope="col">Car Image</th>
@@ -212,8 +213,8 @@
                         </td>
                         <td>
                           {{ getDate(order.start, "") }} -
-                          {{ getDate(order.end, "") }} -
-                          {{ dateDiffInDays(order.start, order.end) }} Days
+                          {{ getDate(order.end, "") }}
+                          ({{ dateDiffInDays(order.start, order.end) }} Days)
                         </td>
                         <td>
                           {{ order.sum | currency }}
@@ -252,7 +253,7 @@
                   class="table table-hover table-bordered table-responsive mt-2"
                 >
                   <thead>
-                    <tr class="borderdLine text-center">
+                    <tr class="borderdLine white-bg text-center">
                       <th scope="col">#</th>
                       <th scope="col">Customer Name</th>
                       <th scope="col">Car Image</th>
@@ -292,8 +293,8 @@
                         </td>
                         <td>
                           {{ getDate(order.start, "") }} -
-                          {{ getDate(order.end, "") }} -
-                          {{ dateDiffInDays(order.start, order.end) }} Days
+                          {{ getDate(order.end, "") }}
+                          ({{ dateDiffInDays(order.start, order.end) }} Days)
                         </td>
                         <td>
                           {{ order.sum | currency }}

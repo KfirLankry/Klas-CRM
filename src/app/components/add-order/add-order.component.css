@@ -26,12 +26,3 @@ option:disabled {
     width: 330px;
   }
 }
-
-/* option:disabled span::before{
-  color: red;
-  font-weight: lighter;
-  width: 10px;
-  height: 10px;
-  font-size: 16px;
-  content: "Not Available";
-} */

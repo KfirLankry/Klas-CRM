@@ -20,14 +20,9 @@
   width: 40%;
 }
 
-table,
+.card,
 .loadingImage {
-  animation: fadeInRight 0.5s ease-in-out;
-}
-
-.tableDiv {
-  height: 68vh;
-  overflow-y: auto;
+  animation: fadeInRight 0.2s ease-in-out;
 }
 
 @keyframes fadeInRight {
@@ -41,8 +36,8 @@ table,
 
 @media only screen and (max-width: 991px) {
   .header {
-    margin: 0 0 0 0.8rem;
-    width: 95vw;
+    margin: 0 0 0 0.3rem;
+    width: 93vw;
     height: 5rem;
   }
 
@@ -57,8 +52,8 @@ table,
 
   .tableDiv {
     height: 100%;
-    width: 92vw;
-    overflow-y: auto;
+    width: 100vw;
+    overflow-y: none;
   }
   .loading {
     width: 90%;
@@ -72,22 +67,20 @@ table,
     width: 30rem;
   }
 
-  #container #hero-img {
-    max-width: 30rem !important;
-    height: 7rem !important;
+  #container {
+    width: 98%;
   }
 }
 
 /* Cards */
 
-#container {
-  width: 23rem;
+.card {
+  width: 100%;
   margin: 1.5rem 0 0 0;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
 }
 
 #container:hover {

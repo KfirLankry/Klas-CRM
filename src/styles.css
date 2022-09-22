@@ -25,13 +25,32 @@
       #0ca2ff 47%,
       #575e86 100%
     )
-    left bottom rgb(234, 234, 234) no-repeat;
+    left bottom rgb(239, 239, 239) no-repeat;
   background-size: 100% 5px; /* if linear-gradient, we need to resize it */
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.212));
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.form-control,
+.btn {
+  filter: drop-shadow(1px 1px 7px rgba(0, 0, 0, 0.17));
 }
 
 .title {
   font-weight: 700;
   color: #3d4157;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 #js-licensing {

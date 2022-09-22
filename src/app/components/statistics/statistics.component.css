@@ -11,6 +11,7 @@
     )
     left bottom rgb(234, 234, 234) no-repeat;
   background-size: 100% 5px; /* if linear-gradient, we need to resize it */
+  animation: fadeInRight 0.2s ease-in-out;
 }
 
 .title {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import {
   IAccTextRenderEventArgs,
   IPointRenderEventArgs,
@@ -19,14 +19,15 @@ export class ReportsComponent implements OnInit {
   constructor(
     private oS: ordersService,
     private carS: CarsService,
-    private cusS: AddCustomerService
+    private cusS: AddCustomerService,
+    private elementRef: ElementRef
   ) {}
 
   orders: Order[] = [];
   cars: Car[] = [];
   customers: Customer[] = [];
 
-  chartPallete:string[] = [
+  chartPallete: string[] = [
     '#254469',
     '#4C5F75',
     '#5E7691',
@@ -37,8 +38,8 @@ export class ReportsComponent implements OnInit {
     '#6C799E',
     '#304680',
     '#586482',
-    '#5F6D94'
-  ]
+    '#5F6D94',
+  ];
 
   carsChart: any = {
     cars: [],
@@ -47,7 +48,7 @@ export class ReportsComponent implements OnInit {
       visible: true,
       position: 'Outside',
       template:
-        '<div class="text-center text-dark"><div>${point.x}</div><div>${point.y} Orders</div></div>'
+        '<div class="text-center text-dark"><div>${point.x}</div><div>${point.y} Orders</div></div>',
     },
     legend: {
       visible: true,
@@ -59,7 +60,7 @@ export class ReportsComponent implements OnInit {
       enable: true,
       format: '<span>${point.x} Ordered ${point.y} Times</span>',
     },
-    colorMap: 'color'
+    colorMap: 'color',
   };
 
   carsIncomeChart: any = {
@@ -83,7 +84,7 @@ export class ReportsComponent implements OnInit {
       enable: true,
       format: '<span>${point.x} Has Made ${point.y}$ in Revenues</span>',
     },
-    colorMap: 'color'
+    colorMap: 'color',
   };
 
   customersChart: any = {
@@ -111,7 +112,7 @@ export class ReportsComponent implements OnInit {
       '#6C799E',
       '#304680',
       '#586482',
-      '#5F6D94'
+      '#5F6D94',
     ],
     cornerRadius: {
       topLeft: 10,

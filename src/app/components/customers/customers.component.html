@@ -9,7 +9,12 @@
       <!-- Header Title -->
       <div class="header container-fluid">
         <div class="mx-4 mt-1">
-          <h2 class="title"><i class="fa-solid fa-user"></i> Customers</h2>
+          <h2 class="title">
+            <i class="fa-solid fa-user"></i> Customers
+            <span style="color: rgb(211, 211, 211)"
+              >({{ costumers.length }})</span
+            >
+          </h2>
           <small>Company's Customers Information.</small>
         </div>
       </div>
@@ -112,7 +117,7 @@
               <div class="tableDiv mt-2">
                 <ng-container *ngIf="costumers.length > 0; else noCustomer">
                   <table
-                    class="table table-hover table-bordered table-responsive"
+                    class="table table-hover white-bg table-bordered table-responsive"
                   >
                     <thead>
                       <tr class="borderdLine text-center">
@@ -211,12 +216,12 @@
             >
               <!-- CardS -->
               <div *ngIf="costumers.length > 0; else error">
-                <div class="cardsDiv container-fluid">
+                <div class="container-fluid">
                   <div class="row">
                     <ng-container
                       *ngFor="let customer of costumers; index as i"
                     >
-                      <div class="card mx-1 mb-2">
+                      <div class="card mx-1 mb-2 white-bg">
                         <div class="row">
                           <div class="profileImage">
                             <img
