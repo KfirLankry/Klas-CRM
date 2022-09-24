@@ -79,6 +79,12 @@ a:hover {
   color: #8067ff;
 }
 
+@media only screen and (min-width: 3430px) {
+  .links {
+    width: 33rem;
+  }
+}
+
 @media only screen and (max-width: 1891px) {
   .links {
     width: 16rem;
