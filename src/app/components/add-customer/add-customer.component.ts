@@ -3,6 +3,7 @@ import { Customer } from 'src/app/interfaces/Customer';
 import { AddCustomerService } from 'src/app/services/add-customer.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -16,17 +17,21 @@ export class AddCustomerComponent implements OnInit {
     phone: '',
     email: '',
     dateAdded: new Date(),
+    addedBy: '',
   };
   constructor(
     private cs: AddCustomerService,
     private activeModal: NgbActiveModal,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private as: AuthService
   ) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
-    // this.customer.dateAdded = new Date(this.customer.dateAdded)
+    // Adding Relevant UserEmail key to Item Document
+    this.customer.addedBy = this.as.getSessionData('email');
+    // Adding Customer to DB
     this.cs
       .addCustomer(this.customer)
       .then(() => {

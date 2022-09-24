@@ -6,4 +6,5 @@ export interface Customer {
   email: string;
   note?: string;
   dateAdded?: Date;
+  addedBy?: string;
 }
