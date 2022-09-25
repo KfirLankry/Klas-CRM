@@ -4,6 +4,7 @@ import { Car } from 'src/app/interfaces/Car';
 import { Customer } from 'src/app/interfaces/Customer';
 import { Order } from 'src/app/interfaces/Order';
 import { AddCustomerService } from 'src/app/services/add-customer.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarsService } from 'src/app/services/cars.service';
 import { ordersService } from 'src/app/services/orders.service';
 import { AddCustomerComponent } from '../add-customer/add-customer.component';
@@ -14,7 +15,7 @@ import { AddCustomerComponent } from '../add-customer/add-customer.component';
   styleUrls: ['./add-order.component.css'],
 })
 export class AddOrderComponent implements OnInit {
-  allOrders: Order[] = []
+  allOrders: Order[] = [];
   order: Order = {
     start: new Date(),
     end: new Date(),
@@ -22,18 +23,20 @@ export class AddOrderComponent implements OnInit {
     customer_id: '',
     sum: 0,
     notes: '',
+    createdBy: '',
   };
   customer: Customer = { firstName: '', lastName: '', phone: '', email: '' };
   cars: Car[] = [];
   customers: Customer[] = [];
 
-  carsAvailabillity:any = []
+  carsAvailabillity: any = [];
 
   constructor(
     private carS: CarsService,
     private cusS: AddCustomerService,
     private os: ordersService,
-    private modal: NgbModal
+    private modal: NgbModal,
+    private as: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -42,14 +45,13 @@ export class AddOrderComponent implements OnInit {
     });
     this.carS.getAll().subscribe((data) => {
       this.cars = data;
-      data.forEach((car)=>{
-        this.carsAvailabillity.push({id:car.id, available:true})
-      })
+      data.forEach((car) => {
+        this.carsAvailabillity.push({ id: car.id, available: true });
+      });
     });
-    this.os.getAll().subscribe((data)=>{
-      this.allOrders = data
-    })
-    
+    this.os.getAll().subscribe((data) => {
+      this.allOrders = data;
+    });
   }
 
   calcOrderSum(startDate: Date, endDate: Date, price: number) {
@@ -88,6 +90,8 @@ export class AddOrderComponent implements OnInit {
   }
 
   onSubmit() {
+    // Adding Relevant UserEmail key to Item Document
+    this.order.createdBy = this.as.getSessionData('email');
     this.order.sum = this.calcOrderSum(
       this.order.start,
       this.order.end,
@@ -108,44 +112,53 @@ export class AddOrderComponent implements OnInit {
     });
   }
 
-  getDate(timestamp:any){
-    let day = new Date(timestamp.seconds*1000).getDate()
-    let month = new Date(timestamp.seconds*1000).getMonth()
-    let year = new Date(timestamp.seconds*1000).getFullYear()
-    
-    let Xmonth = (month+1) as unknown as string
-    let Xday = (day) as unknown as string
+  getDate(timestamp: any) {
+    let day = new Date(timestamp.seconds * 1000).getDate();
+    let month = new Date(timestamp.seconds * 1000).getMonth();
+    let year = new Date(timestamp.seconds * 1000).getFullYear();
 
-    if(month<9) Xmonth= '0'+Xmonth
-    if(day<10) Xday= '0'+Xday
-  
-    
-    return `${year}-${Xmonth}-${Xday}`
+    let Xmonth = (month + 1) as unknown as string;
+    let Xday = day as unknown as string;
+
+    if (month < 9) Xmonth = '0' + Xmonth;
+    if (day < 10) Xday = '0' + Xday;
+
+    return `${year}-${Xmonth}-${Xday}`;
   }
 
-  checkCarAvailabillity(startDate:Date, endDate:Date, carID:string|undefined):boolean|void{
+  checkCarAvailabillity(
+    startDate: Date,
+    endDate: Date,
+    carID: string | undefined
+  ): boolean | void {
+    let relevantOrders: Order[] = [];
+    let result: boolean = true;
 
-    let relevantOrders:Order[] = []
-    let result:boolean = true
-    
-    this.allOrders.forEach((order)=>{
-      if(order.car_id == carID) relevantOrders.push(order)
-    })
+    this.allOrders.forEach((order) => {
+      if (order.car_id == carID) relevantOrders.push(order);
+    });
 
-    relevantOrders.forEach((order)=>{
-      if((new Date(this.getDate(order.start)) <= new Date(startDate) && new Date(this.getDate(order.end)) >= new Date(startDate)) || (new Date(this.getDate(order.start)) <= new Date(endDate) && new Date(this.getDate(order.end)) >= new Date(endDate)) || (new Date(this.getDate(order.start)) >= new Date(startDate) && new Date(this.getDate(order.start)) <= new Date(endDate))) result = false
-    })
+    relevantOrders.forEach((order) => {
+      if (
+        (new Date(this.getDate(order.start)) <= new Date(startDate) &&
+          new Date(this.getDate(order.end)) >= new Date(startDate)) ||
+        (new Date(this.getDate(order.start)) <= new Date(endDate) &&
+          new Date(this.getDate(order.end)) >= new Date(endDate)) ||
+        (new Date(this.getDate(order.start)) >= new Date(startDate) &&
+          new Date(this.getDate(order.start)) <= new Date(endDate))
+      )
+        result = false;
+    });
 
-      this.carsAvailabillity.forEach((car:any)=>{
-        if(car.id==carID && !result) car.available = false
-        else if(car.id==carID && result) car.available = true
-      })
+    this.carsAvailabillity.forEach((car: any) => {
+      if (car.id == carID && !result) car.available = false;
+      else if (car.id == carID && result) car.available = true;
+    });
 
-
-    return result
+    return result;
   }
 
-  checkIfAllCarsAreDisabled():boolean{
-    return this.carsAvailabillity.every((car:any)=> car.available)
+  checkIfAllCarsAreDisabled(): boolean {
+    return this.carsAvailabillity.every((car: any) => car.available);
   }
 }

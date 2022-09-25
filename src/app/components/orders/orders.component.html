@@ -99,6 +99,7 @@
                       <th scope="col">Car Image</th>
                       <th scope="col">Car Model</th>
                       <th scope="col">Order Details</th>
+                      <th scope="col">Created By</th>
                       <th scope="col">Total Price</th>
                       <th scope="col">Actions</th>
                     </tr>
@@ -138,6 +139,9 @@
                             dateDiffInDays(order.start, order.end)
                           }}
                           Days)
+                        </td>
+                        <td>
+                          {{ order.createdBy }}
                         </td>
                         <td>
                           {{ order.sum | currency }}
@@ -181,6 +185,7 @@
                       <th scope="col">Car Image</th>
                       <th scope="col">Car Model</th>
                       <th scope="col">Order Details</th>
+                      <th scope="col">Created By</th>
                       <th scope="col">Total Price</th>
                       <th scope="col">Actions</th>
                     </tr>
@@ -215,6 +220,9 @@
                           {{ getDate(order.start, "") }} -
                           {{ getDate(order.end, "") }}
                           ({{ dateDiffInDays(order.start, order.end) }} Days)
+                        </td>
+                        <td>
+                          {{ order.createdBy }}
                         </td>
                         <td>
                           {{ order.sum | currency }}
@@ -259,6 +267,7 @@
                       <th scope="col">Car Image</th>
                       <th scope="col">Car Model</th>
                       <th scope="col">Order Details</th>
+                      <th scope="col">Created By</th>
                       <th scope="col">Total Price</th>
                       <th scope="col">Actions</th>
                     </tr>
@@ -295,6 +304,9 @@
                           {{ getDate(order.start, "") }} -
                           {{ getDate(order.end, "") }}
                           ({{ dateDiffInDays(order.start, order.end) }} Days)
+                        </td>
+                        <td>
+                          {{ order.createdBy }}
                         </td>
                         <td>
                           {{ order.sum | currency }}
