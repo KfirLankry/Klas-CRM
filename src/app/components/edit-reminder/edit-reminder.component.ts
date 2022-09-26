@@ -28,6 +28,7 @@ export class EditReminderComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.reminder.addedBy = this.auth.getSessionData('email');
     this.auth
       .editReminder(this.reminder)
       .then(() => {

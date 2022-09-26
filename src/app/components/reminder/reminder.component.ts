@@ -28,7 +28,6 @@ export class ReminderComponent implements OnInit {
   }
 
   editReminder(reminder: Reminder) {
-    this.reminder.addedBy = this.auth.getSessionData('email');
     const modalRef = this.modal.open(EditReminderComponent, {
       size: 'lg',
       centered: true,
