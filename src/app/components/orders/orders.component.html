@@ -187,7 +187,6 @@
                       <th scope="col">Order Details</th>
                       <th scope="col">Created By</th>
                       <th scope="col">Total Price</th>
-                      <th scope="col">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -226,17 +225,6 @@
                         </td>
                         <td>
                           {{ order.sum | currency }}
-                        </td>
-                        <td>
-                          <!-- Edit / View / Delete BTNS -->
-                          <div class="btns">
-                            <button
-                              (click)="deleteOrder(order)"
-                              class="btn btn-danger w-75"
-                            >
-                              <i class="fa-solid fa-trash-can"></i>
-                            </button>
-                          </div>
                         </td>
                       </tr>
                     </ng-container>

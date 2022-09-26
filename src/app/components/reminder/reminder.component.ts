@@ -12,11 +12,14 @@ import { EditReminderComponent } from '../edit-reminder/edit-reminder.component'
   styleUrls: ['./reminder.component.css'],
 })
 export class ReminderComponent implements OnInit {
-  reminder: Reminder = { reminder: '' };
+  reminder: Reminder = { reminder: '', addedBy: '' };
   reminderArr: Reminder[] = [];
 
-
-  constructor(private modal: NgbModal, private auth: AuthService, private oS:ordersService) {}
+  constructor(
+    private modal: NgbModal,
+    private auth: AuthService,
+    private oS: ordersService
+  ) {}
 
   ngOnInit(): void {
     this.auth.getReminder().subscribe((reminderData: Reminder[]) => {
@@ -25,6 +28,7 @@ export class ReminderComponent implements OnInit {
   }
 
   editReminder(reminder: Reminder) {
+    this.reminder.addedBy = this.auth.getSessionData('email');
     const modalRef = this.modal.open(EditReminderComponent, {
       size: 'lg',
       centered: true,
@@ -32,5 +36,4 @@ export class ReminderComponent implements OnInit {
     });
     modalRef.componentInstance.id = reminder.id;
   }
-
 }
