@@ -5,7 +5,7 @@ K.L.A.S is an online Customer Relationship Management (CRM) single page End-to-E
 ## More Info:
 
 Development Field: Fullstack  
-Live Web: https://klascrm.web.app/
+Live Web: https://klascrm.web.app/  
 Authors: Kfir Lankry & Aviv Shleyfman
 
 ## Project ingredients:
