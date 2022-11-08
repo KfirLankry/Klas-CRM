@@ -24,3 +24,22 @@ Authors: Kfir Lankry & Aviv Shleyfman
 - User Authentiction
 - Custom Intefaces for Data Types
 - Guarded Routes
+
+## Dependencies Installation:
+
+```
+npm i
+```
+
+## Run Project:
+
+```
+ng serve -o
+```
+## Screenshots:  
+![alt text](https://i.ibb.co/3pnzgS2/crm1.jpg?raw=true) 
+***
+![alt text](https://i.ibb.co/BytdkXZ/crm3.jpg?raw=true)  
+***
+![alt text](https://i.ibb.co/DGwGdwr/crm2.jpg?raw=true)  
+***
